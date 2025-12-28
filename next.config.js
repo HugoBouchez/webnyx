@@ -16,6 +16,9 @@ const nextConfig = {
   },
   basePath: process.env.NODE_ENV === 'production' ? '/webnyx' : '',
   assetPrefix: process.env.NODE_ENV === 'production' ? '/webnyx' : '',
+  // Exclure les routes API du build statique
+  distDir: 'out',
+  trailingSlash: true,
 }
 
 module.exports = nextConfig
