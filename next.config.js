@@ -14,8 +14,8 @@ const nextConfig = {
       },
     ],
   },
-  basePath: process.env.NODE_ENV === 'production' ? '/MyWebsite' : '',
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/MyWebsite' : '',
+  basePath: process.env.NODE_ENV === 'production' ? '/webnyx' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/webnyx' : '',
 }
 
 module.exports = nextConfig
