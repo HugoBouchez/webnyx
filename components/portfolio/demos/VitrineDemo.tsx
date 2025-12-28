@@ -4,6 +4,7 @@ import { useState, useRef } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { Mail, Phone, MapPin, Send, CheckCircle, Calendar, Users, Award, Target, ChevronDown, Clock, Star } from 'lucide-react'
 import Image from 'next/image'
+import { getImagePath } from '@/lib/imagePath'
 
 export default function VitrineDemo() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
@@ -193,7 +194,7 @@ export default function VitrineDemo() {
             >
               <div className="relative h-96 md:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/Image Coaching.webp"
+                  src={getImagePath("/Image Coaching.webp")}
                   alt="Coach professionnel"
                   fill
                   className="object-cover"
@@ -300,7 +301,7 @@ export default function VitrineDemo() {
                   </div>
                   <div className="relative h-64 md:h-80 rounded-xl overflow-hidden">
                     <Image
-                      src="/Image Coaching.webp"
+                      src={getImagePath("/Image Coaching.webp")}
                       alt={services[activeService].title}
                       fill
                       className="object-cover"
@@ -373,7 +374,7 @@ export default function VitrineDemo() {
               className="relative h-96 rounded-2xl overflow-hidden shadow-2xl"
             >
               <Image
-                src="/Image Coaching.webp"
+                src={getImagePath("/Image Coaching.webp")}
                 alt="Coach professionnel"
                 fill
                 className="object-cover"

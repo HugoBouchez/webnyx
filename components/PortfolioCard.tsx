@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { ExternalLink } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { getImagePath } from '@/lib/imagePath'
 
 interface PortfolioCardProps {
   title: string
@@ -32,7 +33,7 @@ export default function PortfolioCard({
     >
       <div className="relative h-64 overflow-hidden bg-gray-100 dark:bg-gray-800">
         <Image
-          src={image}
+          src={getImagePath(image)}
           alt={title}
           fill
           className="object-contain transition-transform duration-500 group-hover:scale-105"

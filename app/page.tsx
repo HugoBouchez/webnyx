@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { ArrowRight, CheckCircle, Code, RefreshCw, Palette, Settings } from 'lucide-react'
 import PortfolioCard from '@/components/PortfolioCard'
 import Image from 'next/image'
+import { getImagePath } from '@/lib/imagePath'
 
 const featuredPortfolio = [
   {
@@ -63,7 +64,7 @@ export default function Home() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/Image-test3Bis.png"
+            src={getImagePath("/Image-test3Bis.png")}
             alt="Background"
             fill
             className="object-cover object-right"
