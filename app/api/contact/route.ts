@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
         const { data, error } = await resend.emails.send({
         from: 'Contact Portfolio <onboarding@resend.dev>', // Vous pouvez changer le domaine après vérification
         to: ['Hugo.bouchez88@gmail.com'],
-        replyTo: email,
+        reply_to: email,
         subject: subject ? `[${subject}] Nouveau message de ${name}` : `Nouveau message de contact de ${name}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
