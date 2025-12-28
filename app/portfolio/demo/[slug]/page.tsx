@@ -18,6 +18,13 @@ const demoComponents: Record<string, React.ComponentType> = {
   'application-web-saas': SaasDemo,
 }
 
+// Required for static export
+export function generateStaticParams() {
+  return Object.keys(demoComponents).map((slug) => ({
+    slug,
+  }))
+}
+
 export default function DemoPage() {
   const params = useParams()
   const slug = params?.slug as string
