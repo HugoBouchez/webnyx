@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Phone, Clock, Shield, CheckCircle, Star, MapPin, Wrench, Droplet, Zap, Home, MessageSquare, Mail, Calendar, Award, Users, TrendingUp, FileText, AlertCircle, Settings, Tool, Building, BadgeCheck } from 'lucide-react'
+import { Phone, Clock, Shield, CheckCircle, Star, MapPin, Wrench, Droplet, Zap, Home, MessageSquare, Mail, Calendar, Award, Users, TrendingUp, FileText, AlertCircle, Settings, Building, BadgeCheck } from 'lucide-react'
 import Image from 'next/image'
 
 export default function LandingDemo() {
