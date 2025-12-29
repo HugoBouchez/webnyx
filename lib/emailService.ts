@@ -5,12 +5,16 @@
 
 import emailjs from '@emailjs/browser'
 
+// Configuration EmailJS - Clés directement dans le code (clés publiques, sécurisées)
+const EMAILJS_CONFIG = {
+  publicKey: 'C0pXOsSRR4ZjvK03i',
+  serviceId: 'service_777',
+  templateId: 'template_yzlvmc1',
+}
+
 // Initialisation d'EmailJS (à faire une seule fois)
 if (typeof window !== 'undefined') {
-  const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || ''
-  if (publicKey) {
-    emailjs.init(publicKey)
-  }
+  emailjs.init(EMAILJS_CONFIG.publicKey)
 }
 
 interface ContactFormData {
@@ -27,18 +31,8 @@ interface ContactFormData {
  */
 export async function sendContactEmail(formData: ContactFormData): Promise<{ success: boolean; error?: string }> {
   try {
-    // Vérification des variables d'environnement
-    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
-    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-
-    if (!serviceId || !templateId || !publicKey) {
-      console.error('EmailJS non configuré. Vérifiez vos variables d\'environnement.')
-      return {
-        success: false,
-        error: 'Service d\'envoi d\'emails non configuré. Veuillez contacter l\'administrateur.',
-      }
-    }
+    // Utilisation de la configuration directe (pas besoin de variables d'environnement)
+    const { serviceId, templateId, publicKey } = EMAILJS_CONFIG
 
     // Protection anti-spam basique : vérification de la longueur du message
     if (formData.message.length < 10) {
