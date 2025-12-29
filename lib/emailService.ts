@@ -65,6 +65,13 @@ export async function sendContactEmail(formData: ContactFormData): Promise<{ suc
       }),
     }
 
+    // Logs de débogage
+    console.log('📧 Envoi email via EmailJS...')
+    console.log('Service ID:', serviceId)
+    console.log('Template ID:', templateId)
+    console.log('Public Key:', publicKey.substring(0, 10) + '...')
+    console.log('Paramètres:', templateParams)
+
     // Envoi de l'email via EmailJS
     const response = await emailjs.send(
       serviceId,
@@ -72,6 +79,8 @@ export async function sendContactEmail(formData: ContactFormData): Promise<{ suc
       templateParams,
       publicKey
     )
+
+    console.log('✅ Réponse EmailJS:', response)
 
     if (response.status === 200) {
       return { success: true }

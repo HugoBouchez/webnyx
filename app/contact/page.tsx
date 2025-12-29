@@ -79,8 +79,12 @@ export default function Contact() {
     e.preventDefault()
     setStatus('sending')
 
+    console.log('📝 Données du formulaire:', formData)
+
     try {
       const result = await sendContactEmail(formData)
+
+      console.log('📬 Résultat de l\'envoi:', result)
 
       if (result.success) {
         setStatus('success')
@@ -88,11 +92,13 @@ export default function Contact() {
         setTimeout(() => setStatus('idle'), 8000)
       } else {
         setStatus('error')
-        console.error('Erreur:', result.error)
+        console.error('❌ Erreur:', result.error)
+        alert(`Erreur: ${result.error}`) // Message d'alerte pour voir l'erreur
         setTimeout(() => setStatus('idle'), 5000)
       }
     } catch (error) {
-      console.error('Erreur lors de l\'envoi:', error)
+      console.error('❌ Erreur lors de l\'envoi:', error)
+      alert(`Erreur: ${error}`) // Message d'alerte pour voir l'erreur
       setStatus('error')
       setTimeout(() => setStatus('idle'), 5000)
     }
