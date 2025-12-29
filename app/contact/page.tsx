@@ -8,6 +8,7 @@ import {
   Zap, Users, Award, Heart
 } from 'lucide-react'
 import Link from 'next/link'
+import { sendContactEmail } from '@/lib/emailService'
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -79,23 +80,19 @@ export default function Contact() {
     setStatus('sending')
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      })
+      const result = await sendContactEmail(formData)
 
-      if (response.ok) {
+      if (result.success) {
         setStatus('success')
         setFormData({ name: '', email: '', subject: '', message: '' })
         setTimeout(() => setStatus('idle'), 8000)
       } else {
         setStatus('error')
+        console.error('Erreur:', result.error)
         setTimeout(() => setStatus('idle'), 5000)
       }
     } catch (error) {
+      console.error('Erreur lors de l\'envoi:', error)
       setStatus('error')
       setTimeout(() => setStatus('idle'), 5000)
     }

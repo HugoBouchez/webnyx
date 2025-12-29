@@ -1,0 +1,14 @@
+Nouveau message de contact
+
+Nom: {{from_name}}
+Email: {{from_email}}
+Sujet: {{subject}}
+Date: {{date}}
+
+Message:
+{{message}}
+
+---
+Ce message a été envoyé depuis le formulaire de contact de votre site web.
+Pour répondre, utilisez simplement la fonction "Répondre" de votre client email.
+

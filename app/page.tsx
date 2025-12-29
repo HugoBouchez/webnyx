@@ -6,6 +6,8 @@ import { ArrowRight, CheckCircle, Code, RefreshCw, Palette, Settings } from 'luc
 import PortfolioCard from '@/components/PortfolioCard'
 import Image from 'next/image'
 import { getImagePath } from '@/lib/imagePath'
+import ServiceModal from '@/components/ServiceModal'
+import { useState, useEffect } from 'react'
 
 const featuredPortfolio = [
   {
@@ -34,33 +36,110 @@ const services = [
     title: 'Création de site vitrine',
     description: 'Sites vitrines modernes et personnalisés pour présenter votre activité, vos services et votre image professionnelle en ligne.',
     color: 'from-blue-500 to-cyan-500',
+    modalContent: {
+      title: 'Création de site vitrine',
+      description: 'Créez un site professionnel sur mesure pour présenter votre activité, améliorer votre visibilité en ligne, renforcer la crédibilité de votre marque et convertir vos visiteurs en clients.',
+      details: [
+        'Design moderne et personnalisé adapté à votre identité de marque',
+        'Site vitrine complet optimisé pour présenter efficacement votre activité et vos services',
+        'Performance optimale pour un chargement rapide et une expérience utilisateur fluide',
+        'SEO de base intégré pour améliorer votre visibilité sur les moteurs de recherche',
+        'Design responsive et adaptatif pour tous les appareils (mobile, tablette, desktop)',
+        'Interface intuitive et navigation claire pour guider vos visiteurs vers l\'action',
+      ],
+    },
   },
   {
     icon: RefreshCw,
     title: 'Refonte de site',
     description: 'Refonte et modernisation de votre site existant pour améliorer son design, sa clarté et son adaptation aux supports actuels.',
     color: 'from-purple-500 to-pink-500',
+    modalContent: {
+      title: 'Refonte de site web',
+      description: 'Améliorez votre site existant en modernisant son design, optimisant l\'expérience utilisateur, améliorant les performances et en l\'alignant avec vos objectifs business actuels.',
+      details: [
+        'Modernisation complète du design pour un rendu actuel et professionnel',
+        'Optimisation de l\'expérience utilisateur (UX) pour une navigation plus fluide et intuitive',
+        'Amélioration des performances techniques (vitesse de chargement, optimisation)',
+        'Alignement avec vos objectifs business et stratégie digitale actuelle',
+        'Migration vers des technologies modernes et performantes',
+        'Amélioration du taux de conversion grâce à une meilleure expérience utilisateur',
+      ],
+    },
   },
   {
     icon: Palette,
     title: 'Design UI/UX',
     description: 'Conception d\'interfaces esthétiques et intuitives pour une navigation fluide et une expérience utilisateur agréable.',
     color: 'from-orange-500 to-red-500',
+    modalContent: {
+      title: 'Design UI/UX',
+      description: 'Concevez des interfaces centrées utilisateur avec des parcours fluides, une esthétique moderne, une meilleure lisibilité et une augmentation du taux de conversion.',
+      details: [
+        'Interfaces intuitives et faciles à utiliser pour une expérience optimale',
+        'Parcours utilisateur fluides et logiques pour guider naturellement vos visiteurs',
+        'Esthétique moderne et professionnelle qui reflète votre image de marque',
+        'Meilleure lisibilité et hiérarchie visuelle pour une compréhension immédiate',
+        'Augmentation du taux de conversion grâce à un design optimisé pour l\'action',
+        'Tests et itérations pour garantir la meilleure expérience possible',
+      ],
+    },
   },
   {
     icon: Settings,
     title: 'Maintenance & hébergement',
     description: 'Hébergement sécurisé et maintenance régulière pour garantir le bon fonctionnement et la sécurité de votre site.',
     color: 'from-green-500 to-emerald-500',
+    modalContent: {
+      title: 'Maintenance & Hébergement',
+      description: 'Gérez la partie technique de votre site avec des mises à jour régulières, une sécurité renforcée, des sauvegardes automatiques, des performances optimisées, un hébergement fiable et un accompagnement continu.',
+      details: [
+        'Mises à jour régulières pour maintenir votre site à jour et sécurisé',
+        'Sécurité renforcée avec protection contre les menaces et vulnérabilités',
+        'Sauvegardes automatiques pour protéger vos données et votre contenu',
+        'Optimisation des performances pour garantir un site rapide et réactif',
+        'Hébergement fiable et performant avec disponibilité maximale',
+        'Accompagnement continu pour garantir un site toujours fonctionnel et performant',
+      ],
+    },
   },
 ]
 
 export default function Home() {
+  const [selectedService, setSelectedService] = useState<number | null>(null)
+  const [scrollProgress, setScrollProgress] = useState(0)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroSection = document.getElementById('hero-section')
+      if (heroSection) {
+        const scrollPosition = window.scrollY
+        const heroHeight = heroSection.offsetHeight
+        // Calcul du progrès du scroll (0 à 1) dans la section hero
+        const progress = Math.min(1, Math.max(0, scrollPosition / (heroHeight * 0.6)))
+        setScrollProgress(progress)
+      }
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll() // Appel initial
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const openModal = (index: number) => {
+    setSelectedService(index)
+  }
+
+  const closeModal = () => {
+    setSelectedService(null)
+  }
 
   return (
     <div>
       {/* Hero Section - Full Screen with Background Image */}
-      <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden pt-20">
+      <section 
+        id="hero-section"
+        className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden pt-20"
+      >
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -72,16 +151,24 @@ export default function Home() {
             quality={90}
           />
           {/* Gradient Overlay - Balanced for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/25 to-black/10" />
           {/* Additional subtle gradient overlay for depth */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/25" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-transparent to-black/15" />
           <div className="absolute inset-0 bg-gradient-to-r from-primary/8 via-transparent to-transparent" />
+          {/* Gradient fade to white at bottom - apparaît progressivement au scroll */}
+          <div 
+            className="absolute bottom-0 left-0 right-0 h-[400px] pointer-events-none transition-opacity duration-300"
+            style={{
+              background: `linear-gradient(to bottom, transparent 0%, rgba(255,255,255,${scrollProgress * 0.2}) ${30 - scrollProgress * 10}%, rgba(255,255,255,${scrollProgress * 0.5}) ${50 - scrollProgress * 10}%, rgba(255,255,255,${scrollProgress * 0.8}) ${70 - scrollProgress * 10}%, rgba(255,255,255,${scrollProgress}) 100%)`,
+              opacity: scrollProgress
+            }}
+          />
         </div>
 
         {/* Content Container - Centered Vertical Layout */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-12">
           <div className="max-w-4xl mx-auto">
-            <div className="relative z-10 bg-black/50 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/20">
+            <div className="relative z-10 bg-black/40 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/20 shadow-2xl">
             {/* Badge - Centered */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -101,9 +188,9 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight mb-6 drop-shadow-2xl text-center"
+              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight mb-6 text-center"
             >
-              <span className="text-white">Créez votre présence en ligne</span>{' '}
+              <span className="text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] [text-shadow:_2px_2px_8px_rgba(0,0,0,0.9)]">Créez votre présence en ligne</span>{' '}
               <span className="bg-gradient-to-r from-blue-300 via-purple-300 to-blue-300 bg-clip-text text-transparent drop-shadow-2xl block mt-2">
                 professionnelle
               </span>
@@ -114,7 +201,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-lg md:text-xl lg:text-2xl text-white/95 leading-relaxed mb-12 drop-shadow-xl text-center max-w-2xl mx-auto"
+              className="text-lg md:text-xl lg:text-2xl text-white leading-relaxed mb-12 text-center max-w-2xl mx-auto drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] [text-shadow:_2px_2px_8px_rgba(0,0,0,0.9)] font-semibold"
             >
               Solutions sur-mesure pour votre entreprise.
             </motion.p>
@@ -264,7 +351,8 @@ export default function Home() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.15 }}
                   whileHover={{ y: -8, scale: 1.02 }}
-                  className="group relative"
+                  className="group relative cursor-pointer"
+                  onClick={() => openModal(index)}
                 >
                   {/* Card */}
                   <div className="relative h-full p-10 bg-white dark:bg-dark-light rounded-2xl border border-gray-200 dark:border-gray-800 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden">
@@ -311,6 +399,18 @@ export default function Home() {
               )
             })}
           </div>
+
+          {/* Service Modals */}
+          {selectedService !== null && (
+            <ServiceModal
+              isOpen={selectedService !== null}
+              onClose={closeModal}
+              title={services[selectedService].title}
+              icon={services[selectedService].icon}
+              color={services[selectedService].color}
+              content={services[selectedService].modalContent}
+            />
+          )}
 
           {/* Bottom CTA */}
           <motion.div
