@@ -53,10 +53,10 @@ export default function Header() {
                 </div>
               </motion.div>
               <div className="flex flex-col">
-                <span className="text-xl font-bold text-gray-900 dark:text-white leading-tight">
+                <span className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white leading-tight">
                   Webnyx
                 </span>
-                <span className="text-xs text-gray-600 dark:text-gray-400 font-medium">
+                <span className="text-[10px] sm:text-xs text-gray-600 dark:text-gray-400 font-medium">
                   Expert
                 </span>
               </div>

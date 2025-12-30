@@ -68,36 +68,36 @@ export default function ServiceModal({
           />
 
           {/* Modal */}
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none pt-24">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 pointer-events-none pt-20 sm:pt-24">
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ duration: 0.3, type: 'spring', damping: 25 }}
-              className="relative w-full max-w-2xl bg-white dark:bg-dark-light rounded-3xl shadow-2xl pointer-events-auto max-h-[90vh] overflow-hidden"
+              className="relative w-full max-w-2xl bg-white dark:bg-dark-light rounded-2xl sm:rounded-3xl shadow-2xl pointer-events-auto max-h-[90vh] overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header with gradient */}
-              <div className={`relative bg-gradient-to-br ${color} p-8 pb-6`}>
+              <div className={`relative bg-gradient-to-br ${color} p-5 sm:p-6 md:p-8 pb-4 sm:pb-5 md:pb-6`}>
                 {/* Close Button */}
                 <button
                   onClick={onClose}
-                  className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full transition-all duration-200 group"
+                  className="absolute top-4 right-4 sm:top-5 sm:right-5 md:top-6 md:right-6 w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 flex items-center justify-center bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full transition-all duration-200 group"
                   aria-label="Fermer"
                 >
-                  <X className="w-5 h-5 text-white group-hover:rotate-90 transition-transform duration-200" />
+                  <X className="w-4 h-4 sm:w-5 sm:h-5 text-white group-hover:rotate-90 transition-transform duration-200" />
                 </button>
 
                 {/* Icon and Title */}
-                <div className="flex items-start space-x-4 pr-12">
-                  <div className="flex-shrink-0 w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/30">
-                    <Icon className="w-8 h-8 text-white" />
+                <div className="flex items-start space-x-3 sm:space-x-4 pr-10 sm:pr-12">
+                  <div className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-white/20 backdrop-blur-sm rounded-xl sm:rounded-2xl flex items-center justify-center border border-white/30">
+                    <Icon className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-white" />
                   </div>
                   <div className="flex-1">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
+                    <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1 sm:mb-2">
                       {content.title}
                     </h2>
-                    <p className="text-white/90 text-lg leading-relaxed">
+                    <p className="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed">
                       {content.description}
                     </p>
                   </div>
@@ -105,22 +105,22 @@ export default function ServiceModal({
               </div>
 
               {/* Content */}
-              <div className="p-8 overflow-y-auto max-h-[calc(90vh-200px)]">
-                <div className="space-y-6">
+              <div className="p-5 sm:p-6 md:p-8 overflow-y-auto max-h-[calc(90vh-200px)]">
+                <div className="space-y-4 sm:space-y-6">
                   {/* Details List */}
-                  <div className="space-y-4">
+                  <div className="space-y-3 sm:space-y-4">
                     {content.details.map((detail, index) => (
                       <motion.div
                         key={index}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.4, delay: index * 0.1 }}
-                        className="flex items-start space-x-4"
+                        className="flex items-start space-x-3 sm:space-x-4"
                       >
-                        <div className={`flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-br ${color} flex items-center justify-center mt-0.5`}>
-                          <div className="w-2 h-2 bg-white rounded-full" />
+                        <div className={`flex-shrink-0 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-gradient-to-br ${color} flex items-center justify-center mt-0.5`}>
+                          <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full" />
                         </div>
-                        <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed flex-1">
+                        <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base leading-relaxed flex-1">
                           {detail}
                         </p>
                       </motion.div>
@@ -130,15 +130,15 @@ export default function ServiceModal({
               </div>
 
               {/* Footer with CTA */}
-              <div className="px-8 pb-8 pt-4 border-t border-gray-200 dark:border-gray-800">
+              <div className="px-5 sm:px-6 md:px-8 pb-5 sm:pb-6 md:pb-8 pt-3 sm:pt-4 border-t border-gray-200 dark:border-gray-800">
                 <Link href="/contact" onClick={onClose}>
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className={`w-full px-8 py-4 bg-gradient-to-r ${color} text-white rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-3 group`}
+                    className={`w-full px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r ${color} text-white rounded-lg sm:rounded-xl font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center space-x-2 sm:space-x-3 group`}
                   >
                     <span>Demander un devis gratuit</span>
-                    <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transform group-hover:translate-x-1 transition-transform" />
                   </motion.button>
                 </Link>
               </div>

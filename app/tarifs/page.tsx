@@ -100,7 +100,7 @@ export default function Tarifs() {
   return (
     <div className="pt-20 min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 dark:from-dark dark:via-dark-light dark:to-dark">
       {/* Hero Section */}
-      <section className="py-20 bg-white dark:bg-dark-light border-b border-gray-200 dark:border-gray-800">
+      <section className="py-12 sm:py-16 md:py-20 bg-white dark:bg-dark-light border-b border-gray-200 dark:border-gray-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -112,13 +112,13 @@ export default function Tarifs() {
               <Sparkles className="w-4 h-4 text-blue-600 dark:text-blue-400" />
               <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">Tarifs Transparents</span>
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white leading-tight px-4">
               Choisissez le Pack{' '}
               <span className="bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
                 Adapté à Vos Besoins
               </span>
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto px-4">
               Des solutions complètes et professionnelles pour votre présence en ligne. 
               Tous les prix sont indiqués TTC avec garantie satisfaction.
             </p>
@@ -169,9 +169,9 @@ export default function Tarifs() {
       </section>
 
       {/* Pricing Cards */}
-      <section className="py-16 bg-white dark:bg-dark-light">
+      <section className="py-12 sm:py-16 bg-white dark:bg-dark-light">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-7xl mx-auto">
             {pricingPlans.map((plan, index) => {
               const Icon = plan.icon
               const displayPrice = isAnnual ? plan.priceAnnual : plan.price
@@ -182,7 +182,7 @@ export default function Tarifs() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className={`relative bg-white dark:bg-dark border-2 rounded-2xl p-8 flex flex-col h-full transition-all duration-300 hover:shadow-xl ${
+                  className={`relative bg-white dark:bg-dark border-2 rounded-xl sm:rounded-2xl p-6 sm:p-8 flex flex-col h-full transition-all duration-300 hover:shadow-xl ${
                     plan.popular
                       ? 'border-blue-600 dark:border-blue-500 shadow-xl scale-105'
                       : plan.premium
@@ -221,22 +221,22 @@ export default function Tarifs() {
                   </div>
 
                   {/* Plan Name */}
-                  <h2 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">
+                  <h2 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-3 text-gray-900 dark:text-white">
                     {plan.name}
                   </h2>
 
                   {/* Description */}
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-6 leading-relaxed min-h-[3.5rem]">
+                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-4 sm:mb-6 leading-relaxed min-h-[3.5rem]">
                     {plan.description}
                   </p>
 
                   {/* Price */}
-                  <div className="mb-6 pb-6 border-b border-gray-200 dark:border-gray-800">
+                  <div className="mb-4 sm:mb-6 pb-4 sm:pb-6 border-b border-gray-200 dark:border-gray-800">
                     <div className="flex items-baseline">
-                      <span className="text-5xl font-bold text-gray-900 dark:text-white">
+                      <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
                         {displayPrice}
                       </span>
-                      <span className="text-lg text-gray-600 dark:text-gray-400 ml-2">
+                      <span className="text-base sm:text-lg text-gray-600 dark:text-gray-400 ml-2">
                         {plan.period}
                       </span>
                     </div>
@@ -263,7 +263,7 @@ export default function Tarifs() {
                             ? 'text-gray-700 dark:text-gray-300'
                             : 'text-green-600 dark:text-green-400'
                         }`} />
-                        <span className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                        <span className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
                           {feature}
                         </span>
                       </li>
@@ -276,7 +276,7 @@ export default function Tarifs() {
                       <motion.button
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
-                        className={`w-full py-3.5 rounded-lg font-semibold text-sm transition-all shadow-md hover:shadow-lg ${
+                        className={`w-full py-3 sm:py-3.5 rounded-lg font-semibold text-xs sm:text-sm transition-all shadow-md hover:shadow-lg ${
                           plan.popular
                             ? 'bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white'
                             : plan.premium
@@ -291,7 +291,7 @@ export default function Tarifs() {
                       <motion.button
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
-                        className="w-full py-3 bg-white dark:bg-dark border-2 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white rounded-lg font-semibold text-sm hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex items-center justify-center space-x-2"
+                        className="w-full py-2.5 sm:py-3 bg-white dark:bg-dark border-2 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white rounded-lg font-semibold text-xs sm:text-sm hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex items-center justify-center space-x-2"
                       >
                         <span>Demander un devis</span>
                         <ArrowRight className="w-4 h-4" />
@@ -332,7 +332,7 @@ export default function Tarifs() {
       </section>
 
       {/* Additional Info */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-gray-50 dark:from-dark dark:via-dark-light dark:to-dark">
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-blue-50 via-white to-gray-50 dark:from-dark dark:via-dark-light dark:to-dark">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -341,10 +341,10 @@ export default function Tarifs() {
             transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white px-4">
               Besoin d'une Solution Sur-Mesure ?
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-400 mb-10 leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-6 sm:mb-8 md:mb-10 leading-relaxed px-4">
               Chaque projet est unique. Contactez-moi pour discuter de vos besoins spécifiques 
               et obtenir un devis personnalisé adapté à votre entreprise.
             </p>
@@ -353,7 +353,7 @@ export default function Tarifs() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-lg font-semibold text-base shadow-lg hover:shadow-xl transition-all flex items-center space-x-2"
+                  className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-lg font-semibold text-sm sm:text-base shadow-lg hover:shadow-xl transition-all flex items-center space-x-2"
                 >
                   <span>Demander un devis personnalisé</span>
                   <ArrowRight className="w-5 h-5" />
@@ -363,7 +363,7 @@ export default function Tarifs() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-white dark:bg-dark-light border-2 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white rounded-lg font-semibold text-base hover:bg-gray-50 dark:hover:bg-gray-800 transition-all"
+                  className="px-6 sm:px-8 py-3 sm:py-4 bg-white dark:bg-dark-light border-2 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white rounded-lg font-semibold text-sm sm:text-base hover:bg-gray-50 dark:hover:bg-gray-800 transition-all"
                 >
                   Voir mes réalisations
                 </motion.button>

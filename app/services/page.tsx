@@ -111,10 +111,10 @@ export default function Services() {
               <Sparkles className="w-4 h-4 text-gray-600 dark:text-gray-400" />
               <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Prix & Services</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white leading-tight px-4">
               Prix & Services
             </h1>
-            <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-4 px-4">
               Deux packs complets pour votre présence en ligne. Comparez les formules standard et premium 
               pour choisir celle qui correspond le mieux à vos besoins.
             </p>
@@ -139,7 +139,7 @@ export default function Services() {
           >
             <div className="flex items-center justify-center space-x-3 mb-4">
               <Code className="w-8 h-8 text-slate-700 dark:text-slate-300" />
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
                 Pack Site Web
               </h2>
             </div>
@@ -299,7 +299,7 @@ export default function Services() {
           >
             <div className="flex items-center justify-center space-x-3 mb-4">
               <Settings className="w-8 h-8 text-slate-700 dark:text-slate-300" />
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
                 Pack Hébergement
               </h2>
             </div>
@@ -458,10 +458,10 @@ export default function Services() {
             transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto text-center bg-white dark:bg-dark-light border-2 border-gray-200 dark:border-gray-800 rounded-2xl p-12 shadow-xl"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white px-4">
               Besoin d'Aide pour Choisir ?
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
+            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-6 sm:mb-8 leading-relaxed px-4">
               Discutons de vos besoins et obtenez un devis gratuit et personnalisé pour trouver la formule qui vous convient.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

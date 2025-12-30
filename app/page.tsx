@@ -138,7 +138,7 @@ export default function Home() {
       {/* Hero Section - Full Screen with Background Image */}
       <section 
         id="hero-section"
-        className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden pt-20"
+        className="relative h-screen min-h-[600px] sm:min-h-[700px] flex items-center justify-center overflow-hidden pt-20"
       >
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
@@ -166,18 +166,18 @@ export default function Home() {
         </div>
 
         {/* Content Container - Centered Vertical Layout */}
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-12">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-8 sm:py-12">
           <div className="max-w-4xl mx-auto">
-            <div className="relative z-10 bg-black/40 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/20 shadow-2xl">
+            <div className="relative z-10 bg-black/40 backdrop-blur-md rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 border border-white/20 shadow-2xl">
             {/* Badge - Centered */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="flex justify-center mb-8"
+              className="flex justify-center mb-4 sm:mb-8"
             >
-              <div className="inline-flex items-center space-x-2 px-4 py-2 bg-white/20 backdrop-blur-md rounded-full border border-white/40 shadow-lg">
-                <span className="text-xs font-semibold text-white drop-shadow-lg tracking-wider uppercase">
+              <div className="inline-flex items-center space-x-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-white/20 backdrop-blur-md rounded-full border border-white/40 shadow-lg">
+                <span className="text-[10px] sm:text-xs font-semibold text-white drop-shadow-lg tracking-wider uppercase">
                   Développeur Web Expert
                 </span>
               </div>
@@ -188,10 +188,10 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] tracking-tight mb-6 text-center"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.15] sm:leading-[1.1] tracking-tight mb-4 sm:mb-6 text-center"
             >
               <span className="text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] [text-shadow:_2px_2px_8px_rgba(0,0,0,0.9)]">Créez votre présence en ligne</span>{' '}
-              <span className="bg-gradient-to-r from-blue-300 via-purple-300 to-blue-300 bg-clip-text text-transparent drop-shadow-2xl block mt-2">
+              <span className="bg-gradient-to-r from-blue-300 via-purple-300 to-blue-300 bg-clip-text text-transparent drop-shadow-2xl block mt-1 sm:mt-2">
                 professionnelle
               </span>
             </motion.h1>
@@ -201,7 +201,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-lg md:text-xl lg:text-2xl text-white leading-relaxed mb-12 text-center max-w-2xl mx-auto drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] [text-shadow:_2px_2px_8px_rgba(0,0,0,0.9)] font-semibold"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl text-white leading-relaxed mb-6 sm:mb-8 md:mb-12 text-center max-w-2xl mx-auto drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] [text-shadow:_2px_2px_8px_rgba(0,0,0,0.9)] font-semibold px-2"
             >
               Solutions sur-mesure pour votre entreprise.
             </motion.p>
@@ -211,26 +211,26 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 sm:mb-12 md:mb-16 px-2"
             >
               <Link href="/portfolio" className="w-full sm:w-auto">
                 <motion.button
                   whileHover={{ scale: 1.05, boxShadow: "0 15px 50px rgba(0,0,0,0.5)" }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full sm:w-auto px-10 py-5 bg-gradient-to-r from-primary to-accent text-white rounded-xl font-bold text-lg shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center space-x-2 backdrop-blur-sm w-[320px]"
+                  className="w-full sm:w-auto px-6 sm:px-8 md:px-10 py-3.5 sm:py-4 md:py-5 bg-gradient-to-r from-primary to-accent text-white rounded-lg sm:rounded-xl font-bold text-base sm:text-lg shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center space-x-2 backdrop-blur-sm"
                 >
                   <span>Voir mes réalisations</span>
-                  <ArrowRight className="w-5 h-5" />
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </motion.button>
               </Link>
               <Link href="/contact" className="w-full sm:w-auto">
                 <motion.button
                   whileHover={{ scale: 1.05, boxShadow: "0 15px 50px rgba(255,255,255,0.4)" }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full sm:w-auto px-10 py-5 bg-white text-primary rounded-xl font-bold text-lg shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center space-x-2 border-2 border-white/50 relative overflow-hidden group w-[320px]"
+                  className="w-full sm:w-auto px-6 sm:px-8 md:px-10 py-3.5 sm:py-4 md:py-5 bg-white text-primary rounded-lg sm:rounded-xl font-bold text-base sm:text-lg shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center space-x-2 border-2 border-white/50 relative overflow-hidden group"
                 >
                   <span className="relative z-10">Demander un devis gratuit</span>
-                  <ArrowRight className="w-5 h-5 relative z-10" />
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 relative z-10" />
                   <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </motion.button>
               </Link>
@@ -241,15 +241,15 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="grid grid-cols-2 gap-4 mb-12 max-w-2xl mx-auto"
+              className="grid grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8 md:mb-12 max-w-2xl mx-auto"
             >
-              <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20 shadow-xl text-center">
-                <p className="text-white font-bold text-lg mb-1">Réponse rapide</p>
-                <p className="text-white/90 text-sm">Sous 24h</p>
+              <div className="bg-white/10 backdrop-blur-md rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 border border-white/20 shadow-xl text-center">
+                <p className="text-white font-bold text-sm sm:text-base md:text-lg mb-1">Réponse rapide</p>
+                <p className="text-white/90 text-xs sm:text-sm">Sous 24h</p>
               </div>
-              <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20 shadow-xl text-center">
-                <p className="text-white font-bold text-lg mb-1">Technologies modernes</p>
-                <p className="text-white/90 text-sm">Next.js • React • Tailwind</p>
+              <div className="bg-white/10 backdrop-blur-md rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 border border-white/20 shadow-xl text-center">
+                <p className="text-white font-bold text-sm sm:text-base md:text-lg mb-1">Technologies modernes</p>
+                <p className="text-white/90 text-xs sm:text-sm">Next.js • React • Tailwind</p>
               </div>
             </motion.div>
 
@@ -258,19 +258,19 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1 }}
-              className="flex flex-wrap items-center justify-center gap-6"
+              className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6"
             >
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="w-5 h-5 text-white drop-shadow-lg" />
-                <span className="text-sm text-white drop-shadow-lg font-medium">Sans engagement</span>
+              <div className="flex items-center space-x-1.5 sm:space-x-2">
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-white drop-shadow-lg" />
+                <span className="text-xs sm:text-sm text-white drop-shadow-lg font-medium">Sans engagement</span>
               </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="w-5 h-5 text-white drop-shadow-lg" />
-                <span className="text-sm text-white drop-shadow-lg font-medium">Réponse sous 24h</span>
+              <div className="flex items-center space-x-1.5 sm:space-x-2">
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-white drop-shadow-lg" />
+                <span className="text-xs sm:text-sm text-white drop-shadow-lg font-medium">Réponse sous 24h</span>
               </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="w-5 h-5 text-white drop-shadow-lg" />
-                <span className="text-sm text-white drop-shadow-lg font-medium">Devis gratuit</span>
+              <div className="flex items-center space-x-1.5 sm:space-x-2">
+                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-white drop-shadow-lg" />
+                <span className="text-xs sm:text-sm text-white drop-shadow-lg font-medium">Devis gratuit</span>
               </div>
             </motion.div>
             </div>
@@ -300,7 +300,7 @@ export default function Home() {
       </section>
 
       {/* Services Section - Modern & Premium */}
-      <section className="relative py-32 bg-gradient-to-b from-white via-gray-50 to-white dark:from-dark dark:via-dark-light dark:to-dark overflow-hidden">
+      <section className="relative py-16 sm:py-24 md:py-32 bg-gradient-to-b from-white via-gray-50 to-white dark:from-dark dark:via-dark-light dark:to-dark overflow-hidden">
         {/* Decorative Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
@@ -327,13 +327,13 @@ export default function Home() {
                 EXPERTISE PROFESSIONNELLE
               </span>
             </motion.div>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-gray-900 dark:text-white leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 md:mb-8 text-gray-900 dark:text-white leading-tight px-4">
               Services{' '}
               <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
                 Premium
               </span>
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto px-4">
               Des solutions sur-mesure conçues pour transformer votre présence digitale. 
               Chaque service est optimisé pour la performance, l'élégance et l'efficacité.
             </p>
@@ -355,7 +355,7 @@ export default function Home() {
                   onClick={() => openModal(index)}
                 >
                   {/* Card */}
-                  <div className="relative h-full p-10 bg-white dark:bg-dark-light rounded-2xl border border-gray-200 dark:border-gray-800 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden">
+                  <div className="relative h-full p-6 sm:p-8 md:p-10 bg-white dark:bg-dark-light rounded-xl sm:rounded-2xl border border-gray-200 dark:border-gray-800 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden">
                     {/* Gradient Background on Hover */}
                     <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
                     
@@ -374,12 +374,12 @@ export default function Home() {
                       </motion.div>
 
                       {/* Title */}
-                      <h3 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-white group-hover:text-primary dark:group-hover:text-accent transition-colors duration-300">
+                      <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 text-gray-900 dark:text-white group-hover:text-primary dark:group-hover:text-accent transition-colors duration-300">
                         {service.title}
                       </h3>
 
                       {/* Description */}
-                      <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                      <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-4 sm:mb-6">
                         {service.description}
                       </p>
 
@@ -435,7 +435,7 @@ export default function Home() {
       </section>
 
       {/* Portfolio Preview */}
-      <section className="py-32 bg-white dark:bg-dark-light">
+      <section className="py-16 sm:py-24 md:py-32 bg-white dark:bg-dark-light">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -444,13 +444,13 @@ export default function Home() {
             transition={{ duration: 0.4 }}
             className="text-center mb-20 max-w-3xl mx-auto"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white px-4">
               Mes{' '}
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 Réalisations
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed px-4">
               Découvrez une sélection de projets récents. Chaque site est unique, 
               conçu pour répondre aux besoins spécifiques de mes clients et optimisé pour la performance.
             </p>
@@ -485,7 +485,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-32 bg-gradient-to-r from-primary via-accent to-primary">
+      <section className="relative py-16 sm:py-24 md:py-32 bg-gradient-to-r from-primary via-accent to-primary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -494,10 +494,10 @@ export default function Home() {
             transition={{ duration: 0.4 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-white px-4">
               Prêt à transformer votre idée en réalité digitale ?
             </h2>
-            <p className="text-lg text-white/90 mb-10 leading-relaxed">
+            <p className="text-base sm:text-lg text-white/90 mb-6 sm:mb-8 md:mb-10 leading-relaxed px-4">
               Discutons de votre projet ensemble. Je vous propose un devis gratuit et personnalisé 
               pour créer un site web qui correspond parfaitement à vos besoins et à votre image de marque.
             </p>

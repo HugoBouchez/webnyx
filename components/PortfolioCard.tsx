@@ -66,11 +66,11 @@ export default function PortfolioCard({
           ) : null}
         </div>
       </div>
-      <div className="p-6">
-        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+      <div className="p-4 sm:p-6">
+        <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">
           {title}
         </h3>
-        <p className="text-gray-600 dark:text-gray-400">
+        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
           {description}
         </p>
       </div>

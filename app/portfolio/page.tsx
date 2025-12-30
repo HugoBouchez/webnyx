@@ -55,10 +55,10 @@ export default function Portfolio() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white px-4">
               Mes réalisations
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto px-4">
               Découvrez une sélection de mes réalisations. Chaque projet est unique et conçu pour répondre aux besoins spécifiques de mes clients.
             </p>
           </motion.div>

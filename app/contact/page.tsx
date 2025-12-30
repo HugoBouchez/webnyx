@@ -121,7 +121,7 @@ export default function Contact() {
   return (
     <div className="pt-20 min-h-screen bg-gradient-to-b from-white via-gray-50 to-white dark:from-dark dark:via-dark-light dark:to-dark">
       {/* Hero Section - Premium */}
-      <section className="relative py-24 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 overflow-hidden">
+      <section className="relative py-12 sm:py-16 md:py-24 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 overflow-hidden">
         {/* Decorative Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
@@ -148,7 +148,7 @@ export default function Contact() {
             </motion.div>
 
             {/* Main Title */}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-gray-900 dark:text-white leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 md:mb-8 text-gray-900 dark:text-white leading-tight px-4">
               Discutons de votre{' '}
               <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
                 projet
@@ -156,7 +156,7 @@ export default function Contact() {
             </h1>
 
             {/* Subtitle */}
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed mb-12 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed mb-6 sm:mb-8 md:mb-12 max-w-3xl mx-auto px-4">
               Transformez votre idée en réalité digitale. Je suis là pour vous accompagner 
               dans la création d'un site web professionnel qui correspond parfaitement à vos besoins.
             </p>
@@ -185,9 +185,9 @@ export default function Contact() {
       </section>
 
       {/* Contact Section - Two Columns */}
-      <section className="py-20">
+      <section className="py-12 sm:py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 lg:gap-16 max-w-7xl mx-auto">
             {/* Left Column - Contact Info & Why Contact */}
             <div className="space-y-12">
               {/* Why Contact Section */}
@@ -198,7 +198,7 @@ export default function Contact() {
                 transition={{ duration: 0.6 }}
                 className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl p-8 border border-primary/10 dark:border-accent/10"
               >
-                <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+                <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white">
                   Pourquoi me contacter ?
                 </h2>
                 <div className="space-y-4">
@@ -252,7 +252,7 @@ export default function Contact() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="bg-white dark:bg-dark-light rounded-2xl p-8 border border-gray-200 dark:border-gray-800 shadow-lg"
               >
-                <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">
+                <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 text-gray-900 dark:text-white">
                   Informations de contact
                 </h2>
                 <div className="space-y-6">
@@ -261,16 +261,16 @@ export default function Contact() {
                       <Mail className="w-7 h-7 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900 dark:text-white mb-1 text-lg">
+                      <h3 className="font-semibold text-gray-900 dark:text-white mb-1 text-base sm:text-lg">
                         Email
                       </h3>
                       <a
                         href="mailto:Hugo.bouchez88@gmail.com"
-                        className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors text-lg"
+                        className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors text-sm sm:text-base md:text-lg break-all"
                       >
                         Hugo.bouchez88@gmail.com
                       </a>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                      <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
                         Réponse sous 24h
                       </p>
                     </div>
@@ -280,16 +280,16 @@ export default function Contact() {
                       <Phone className="w-7 h-7 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900 dark:text-white mb-1 text-lg">
+                      <h3 className="font-semibold text-gray-900 dark:text-white mb-1 text-base sm:text-lg">
                         Téléphone
                       </h3>
                       <a
                         href="tel:+32487748860"
-                        className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors text-lg"
+                        className="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-accent transition-colors text-sm sm:text-base md:text-lg"
                       >
                         +32 487 74 88 60
                       </a>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                      <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
                         Disponible du lundi au vendredi
                       </p>
                     </div>
@@ -299,13 +299,13 @@ export default function Contact() {
                       <MapPin className="w-7 h-7 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900 dark:text-white mb-1 text-lg">
+                      <h3 className="font-semibold text-gray-900 dark:text-white mb-1 text-base sm:text-lg">
                         Localisation
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-300 text-lg">
+                      <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base md:text-lg">
                         Bruxelles, Belgique
                       </p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                      <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
                         Travail à distance possible
                       </p>
                     </div>
@@ -334,13 +334,13 @@ export default function Contact() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="bg-white dark:bg-dark-light rounded-2xl p-8 md:p-10 border border-gray-200 dark:border-gray-800 shadow-xl"
+              className="bg-white dark:bg-dark-light rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-10 border border-gray-200 dark:border-gray-800 shadow-xl"
             >
-              <div className="mb-8">
-                <h2 className="text-3xl font-bold mb-3 text-gray-900 dark:text-white">
+              <div className="mb-6 sm:mb-8">
+                <h2 className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-3 text-gray-900 dark:text-white">
                   Envoyez-moi un message
                 </h2>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
                   Remplissez le formulaire ci-dessous et je vous répondrai dans les plus brefs délais.
                 </p>
               </div>
@@ -361,7 +361,7 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all placeholder-gray-400"
+                    className="w-full px-4 py-3 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all placeholder-gray-400 text-sm sm:text-base"
                     placeholder="Votre nom et prénom"
                   />
                 </div>
@@ -381,7 +381,7 @@ export default function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all placeholder-gray-400"
+                    className="w-full px-4 py-3 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all placeholder-gray-400 text-sm sm:text-base"
                     placeholder="votre@email.com"
                   />
                   <p className="text-xs text-gray-500 dark:text-gray-400 mt-1.5">
@@ -403,7 +403,7 @@ export default function Contact() {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                    className="w-full px-4 py-3 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm sm:text-base"
                   >
                     <option value="">Sélectionnez un sujet</option>
                     <option value="Devis">Demande de devis</option>
@@ -430,7 +430,7 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none placeholder-gray-400"
+                    className="w-full px-4 py-3 sm:py-3.5 rounded-lg sm:rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-dark text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none placeholder-gray-400 text-sm sm:text-base"
                     placeholder="Décrivez votre projet, vos besoins, votre budget approximatif, ou posez-moi vos questions..."
                   />
                   <p className="text-xs text-gray-500 dark:text-gray-400 mt-1.5">
@@ -487,7 +487,7 @@ export default function Contact() {
                   disabled={status === 'sending'}
                   whileHover={{ scale: status !== 'sending' ? 1.02 : 1 }}
                   whileTap={{ scale: status !== 'sending' ? 0.98 : 1 }}
-                  className="w-full px-8 py-4 bg-gradient-to-r from-primary to-accent text-white rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-3"
+                  className="w-full px-6 sm:px-8 py-3.5 sm:py-4 bg-gradient-to-r from-primary to-accent text-white rounded-lg sm:rounded-xl font-semibold text-base sm:text-lg shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-3"
                 >
                   {status === 'sending' ? (
                     <>
@@ -514,7 +514,7 @@ export default function Contact() {
       </section>
 
       {/* FAQ Section - Enhanced */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-dark-light dark:to-dark">
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-gray-50 to-white dark:from-dark-light dark:to-dark">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -534,13 +534,13 @@ export default function Contact() {
               >
                 <HelpCircle className="w-10 h-10 text-primary dark:text-accent" />
               </motion.div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white px-4">
                 Questions{' '}
                 <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                   Fréquentes
                 </span>
               </h2>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4">
                 Trouvez rapidement les réponses à vos questions les plus courantes. 
                 Si vous ne trouvez pas ce que vous cherchez, n'hésitez pas à me contacter directement.
               </p>
@@ -561,7 +561,7 @@ export default function Contact() {
                     onClick={() => toggleFAQ(index)}
                     className="w-full px-6 py-5 md:px-8 md:py-6 flex items-center justify-between text-left focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset group"
                   >
-                    <span className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white pr-8 group-hover:text-primary dark:group-hover:text-accent transition-colors">
+                    <span className="text-base sm:text-lg md:text-xl font-semibold text-gray-900 dark:text-white pr-6 sm:pr-8 group-hover:text-primary dark:group-hover:text-accent transition-colors">
                       {faq.question}
                     </span>
                     <motion.div
@@ -583,7 +583,7 @@ export default function Contact() {
                       >
                         <div className="px-6 md:px-8 pb-6 md:pb-8 pt-0">
                           <div className="pt-5 border-t border-gray-200 dark:border-gray-800">
-                            <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-base md:text-lg">
+                            <p className="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
                               {faq.answer}
                             </p>
                           </div>
@@ -604,10 +604,10 @@ export default function Contact() {
               className="mt-16 text-center bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl p-8 md:p-12 border border-primary/10 dark:border-accent/10"
             >
               <MessageSquare className="w-12 h-12 text-primary dark:text-accent mx-auto mb-4" />
-              <h3 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-white">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 text-gray-900 dark:text-white px-4">
                 Vous ne trouvez pas la réponse à votre question ?
               </h3>
-              <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
+              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 mb-4 sm:mb-6 max-w-2xl mx-auto px-4">
                 Je suis là pour vous aider. Contactez-moi directement et je vous répondrai personnellement 
                 dans les plus brefs délais.
               </p>
