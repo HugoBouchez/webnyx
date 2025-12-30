@@ -67,7 +67,7 @@ const pricingPlans = [
     name: 'Hébergement Premium',
     description: 'Hébergement premium avec performances optimales, modifications mensuelles incluses et support prioritaire pour votre site web.',
     price: '60',
-    priceAnnual: '50',
+    priceAnnual: '40',
     period: '€/mois',
     badge: 'Premium',
     icon: Crown,
@@ -231,7 +231,7 @@ export default function Tarifs() {
                   </p>
 
                   {/* Price */}
-                  <div className="mb-4 sm:mb-6 pb-4 sm:pb-6 border-b border-gray-200 dark:border-gray-800">
+                  <div className="mb-4 sm:mb-6 pb-4 sm:pb-6 border-b border-gray-200 dark:border-gray-800 relative">
                     <div className="flex items-baseline">
                       <span className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
                         {displayPrice}
@@ -240,14 +240,25 @@ export default function Tarifs() {
                         {plan.period}
                       </span>
                     </div>
-                    {plan.period.includes('mois') && (
-                      <p className="text-xs text-gray-500 dark:text-gray-500 mt-2">
-                        Facturation {isAnnual ? 'annuelle' : 'mensuelle'}
-                        {isAnnual && plan.name === 'Hébergement' && (
-                          <span className="ml-2 text-green-600 dark:text-green-400 font-semibold">
-                            Économisez {25 - 17}€/mois
-                          </span>
+                    {plan.period.includes('mois') && isAnnual && (
+                      <div className="mt-3">
+                        {plan.name === 'Hébergement' && (
+                          <div className="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-full text-xs sm:text-sm font-bold shadow-md">
+                            <span className="mr-1.5">💰</span>
+                            Économisez jusqu'à 32%
+                          </div>
                         )}
+                        {plan.name === 'Hébergement Premium' && (
+                          <div className="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-full text-xs sm:text-sm font-bold shadow-md">
+                            <span className="mr-1.5">💰</span>
+                            Économisez jusqu'à 33%
+                          </div>
+                        )}
+                      </div>
+                    )}
+                    {plan.period.includes('mois') && !isAnnual && (
+                      <p className="text-xs text-gray-500 dark:text-gray-500 mt-2">
+                        Facturation mensuelle
                       </p>
                     )}
                   </div>

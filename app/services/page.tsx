@@ -74,7 +74,7 @@ const hostingPack = {
   premium: {
     title: 'Hébergement Premium',
     price: '60€/mois',
-    priceAnnual: '50€/mois',
+    priceAnnual: '40€/mois',
     description: 'Hébergement premium avec performances optimales, modifications mensuelles incluses et support prioritaire pour votre site web.',
     icon: Crown,
     color: 'premium',
@@ -310,15 +310,27 @@ export default function Services() {
             {/* Comparison Header */}
             <div className="max-w-5xl mx-auto mb-8">
               <div className="grid grid-cols-2 gap-4 text-center">
-                <div className="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-200 dark:border-slate-800">
+                <div className="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-200 dark:border-slate-800 relative">
                   <div className="text-sm font-semibold text-slate-600 dark:text-slate-400 mb-1">FORMULE STANDARD</div>
                   <div className="text-2xl font-bold text-gray-900 dark:text-white">25€/mois</div>
-                  <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">ou 17€/mois en annuel</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-500 mt-1 mb-2">
+                    ou 17€/mois en annuel
+                  </div>
+                  <div className="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-full text-xs font-bold shadow-md">
+                    <span className="mr-1.5">💰</span>
+                    Économisez jusqu'à 32%
+                  </div>
                 </div>
-                <div className="p-4 bg-slate-900 dark:bg-slate-800 rounded-lg border border-slate-700 dark:border-slate-700">
+                <div className="p-4 bg-slate-900 dark:bg-slate-800 rounded-lg border border-slate-700 dark:border-slate-700 relative">
                   <div className="text-sm font-semibold text-slate-300 mb-1">FORMULE PREMIUM</div>
                   <div className="text-2xl font-bold text-white">60€/mois</div>
-                  <div className="text-xs text-slate-400 mt-1">ou 50€/mois en annuel (+3 modifications/mois)</div>
+                  <div className="text-xs text-slate-400 mt-1 mb-2">
+                    ou 40€/mois en annuel
+                  </div>
+                  <div className="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-full text-xs font-bold shadow-md">
+                    <span className="mr-1.5">💰</span>
+                    Économisez jusqu'à 33%
+                  </div>
                 </div>
               </div>
             </div>
