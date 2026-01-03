@@ -1,490 +1,311 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Code, Settings, CheckCircle, ArrowRight, Sparkles, Shield, Zap, Rocket, Crown, Star, X } from 'lucide-react'
+import { Check, Info, ArrowRight, Sparkles } from 'lucide-react'
 import Link from 'next/link'
 
-const siteWebPack = {
-  standard: {
-    title: 'Pack Site Web',
-    price: '300€',
-    description: 'Solution complète pour créer votre présence en ligne professionnelle avec un site vitrine moderne et performant.',
-    icon: Star,
-    color: 'blue',
-    features: [
-      'Design personnalisé et unique sur-mesure',
-      'Site vitrine complet (jusqu\'à 4 rubriques)',
-      'Développement UX professionnel',
-      'Formulaire de contact fonctionnel et sécurisé',
-      'Livraison complète sous 1 mois',
-    ],
-    notIncluded: [
-      'Plus de 4 rubriques',
-      'Formation à l\'utilisation',
-      'Livraison prioritaire',
-      'Modifications durant la création',
-    ],
-  },
-  premium: {
-    title: 'Pack Site Web Premium',
-    price: '700€',
-    description: 'Solution premium avec design haut de gamme, développement avancé et fonctionnalités illimitées pour une présence en ligne exceptionnelle.',
-    icon: Crown,
-    color: 'premium',
-    features: [
-      'Design personnalisé et unique haut de gamme',
-      'Site vitrine complet (jusqu\'à 10 rubriques)',
-      'Développement UX optimisé et expert',
-      'Formulaire de contact fonctionnel et sécurisé',
-      'Formation complète à l\'utilisation de votre site',
-      'Livraison prioritaire sous 2 semaines',
-      'Garantie satisfait ou remboursé',
-      'Support prioritaire et modifications acceptées durant la création',
-    ],
-    advantages: [
-      '+ Jusqu\'à 10 rubriques (vs 4)',
-      '+ Formation complète incluse',
-      '+ Livraison prioritaire 2 semaines',
-      '+ Modifications acceptées durant la création',
-      '+ Support prioritaire',
-    ],
-  },
-}
+const commonFeatures = [
+  'Service de maintenance',
+  'Conseils personnalisés',
+  'Astuces par email',
+]
 
-const hostingPack = {
-  standard: {
-    title: 'Hébergement',
-    price: '25€/mois',
-    priceAnnual: '17€/mois',
-    description: 'Hébergement sécurisé et performant pour votre site web avec sauvegarde automatique et déploiement rapide.',
-    icon: Shield,
-    color: 'green',
+const pricingPlans = [
+  {
+    size: 'S',
+    title: 'Service de conception de site Web S',
+    description: 'Idéal pour un site simple nécessitant peu de modifications',
+    priceMonthly: 25,
+    priceMonthlyTTC: 30,
+    setupFee: 199,
+    setupFeeTTC: 238.80,
     features: [
-      'Hébergement haute performance',
-      'Déploiement sur le net',
-      'Sauvegarde automatique en local',
-      'Support technique (1 changement simple par mois)',
+      'Conseils de nos experts + création de 3 pages personnalisées',
+      '1 modification du site par trimestre',
+      '1 domaine inclus',
     ],
-    notIncluded: [
-      'Plus de 1 changement par mois',
-      'Support prioritaire',
-      'Nom de domaine inclus',
-    ],
+    popular: false,
   },
-  premium: {
-    title: 'Hébergement Premium',
-    price: '60€/mois',
-    priceAnnual: '40€/mois',
-    description: 'Hébergement premium avec performances optimales, modifications mensuelles incluses et support prioritaire pour votre site web.',
-    icon: Crown,
-    color: 'premium',
+  {
+    size: 'M',
+    title: 'Service de conception de site Web M',
+    description: 'Idéal pour un site de taille moyenne nécessitant des modifications régulières',
+    priceMonthly: 40,
+    priceMonthlyTTC: 48,
+    setupFee: 299,
+    setupFeeTTC: 358.80,
     features: [
-      'Hébergement haute performance',
-      'Déploiement sur le net',
-      'Sauvegarde automatique en local',
-      'Support technique (1 changement simple par mois)',
-      '4 modifications par mois',
-      'Support prioritaire en cas de problème',
-      'Performances du site optimisé et nom de domaine inclus',
+      'Conseils de nos experts + création de 5 pages personnalisées',
+      '1 modification du site par mois',
+      '1 domaine inclus',
     ],
-    advantages: [
-      '+ 4 modifications par mois (vs 1)',
-      '+ Support prioritaire en cas de problème',
-      '+ Performances optimisées et nom de domaine inclus',
-    ],
+    popular: true,
   },
-}
+  {
+    size: 'L',
+    title: 'Service de conception de site Web L',
+    description: 'Idéal pour un site de grande envergure nécessitant des modifications fréquentes',
+    priceMonthly: 70,
+    priceMonthlyTTC: 84,
+    setupFee: 399,
+    setupFeeTTC: 478.80,
+    features: [
+      'Conseils de nos experts + création de 7 pages personnalisées',
+      'Modifications du site illimitées',
+      '1 domaine inclus',
+    ],
+    popular: false,
+  },
+]
 
 export default function Services() {
   return (
-    <div className="pt-20 min-h-screen bg-white dark:bg-dark">
+    <div className="pt-20 min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 dark:from-dark dark:via-dark-light dark:to-dark">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-white dark:from-dark dark:to-dark-light border-b border-gray-200 dark:border-gray-800">
+      <section className="py-12 sm:py-16 md:py-20 bg-white dark:bg-dark-light border-b border-gray-200 dark:border-gray-800">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12 max-w-3xl mx-auto"
+            className="text-center mb-12 max-w-4xl mx-auto"
           >
-            <div className="inline-flex items-center space-x-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full mb-6">
-              <Sparkles className="w-4 h-4 text-gray-600 dark:text-gray-400" />
-              <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Prix & Services</span>
+            <div className="inline-flex items-center space-x-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 rounded-full mb-6">
+              <Sparkles className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+              <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">Prix & Services</span>
             </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white leading-tight px-4">
-              Prix & Services
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white leading-tight px-4">
+              Service de conception de site Web
             </h1>
-            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-4 px-4">
-              Deux packs complets pour votre présence en ligne. Comparez les formules standard et premium 
-              pour choisir celle qui correspond le mieux à vos besoins.
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto px-4 mb-8">
+              Choisissez la formule qui correspond le mieux à vos besoins. 
+              Tous nos packs incluent l'hébergement et la mise en ligne.
             </p>
-            <div className="inline-flex items-center space-x-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
-              <span className="text-sm font-semibold text-blue-700 dark:text-blue-300">
-                💰 Tarifs inclus : Tous les prix sont détaillés ci-dessous avec chaque pack
-              </span>
-            </div>
+            
+            {/* Explanation Box */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="max-w-4xl mx-auto bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 border-2 border-blue-200 dark:border-blue-800 rounded-xl p-6 sm:p-8"
+            >
+              <h2 className="text-xl sm:text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+                ✨ Chaque pack inclut tous les services
+              </h2>
+              <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+                Nos packs complets incluent <strong>tous les services</strong> nécessaires :
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+                <div className="flex items-start space-x-3">
+                  <Check className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-semibold text-gray-900 dark:text-white mb-1">Services de développement</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      Design personnalisé, création de pages, développement UX, formulaire de contact
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <Check className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-1" />
+                  <div>
+                    <h3 className="font-semibold text-gray-900 dark:text-white mb-1">Services d'hébergement</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                      Hébergement haute performance, déploiement, sauvegarde automatique, support technique
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Pack Site Web */}
-      <section className="py-20 bg-white dark:bg-dark-light">
+      {/* Pricing Table */}
+      <section className="py-12 sm:py-16 bg-white dark:bg-dark-light">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-12"
-          >
-            <div className="flex items-center justify-center space-x-3 mb-4">
-              <Code className="w-8 h-8 text-slate-700 dark:text-slate-300" />
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
-                Pack Site Web
-              </h2>
-            </div>
-            <p className="text-center text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-8">
-              Création complète de votre site web professionnel
-            </p>
-            
-            {/* Comparison Header */}
-            <div className="max-w-5xl mx-auto mb-8">
-              <div className="grid grid-cols-2 gap-4 text-center">
-                <div className="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-200 dark:border-slate-800">
-                  <div className="text-sm font-semibold text-slate-600 dark:text-slate-400 mb-1">FORMULE STANDARD</div>
-                  <div className="text-2xl font-bold text-gray-900 dark:text-white">300€</div>
-                  <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">Prix unique</div>
-                </div>
-                <div className="p-4 bg-slate-900 dark:bg-slate-800 rounded-lg border border-slate-700 dark:border-slate-700">
-                  <div className="text-sm font-semibold text-slate-300 mb-1">FORMULE PREMIUM</div>
-                  <div className="text-2xl font-bold text-white">700€</div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* Standard */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="bg-white dark:bg-dark border-2 border-slate-300 dark:border-slate-700 rounded-xl p-8 hover:shadow-xl transition-all relative"
-            >
-              <div className="absolute -top-4 left-6">
-                <span className="px-4 py-1.5 bg-slate-800 dark:bg-slate-700 text-white rounded-full text-xs font-bold shadow-lg">
-                  STANDARD
-                </span>
-              </div>
-              <div className="flex items-center justify-end mb-6">
-                <div className="w-16 h-16 rounded-xl bg-slate-800 dark:bg-slate-700 flex items-center justify-center shadow-lg">
-                  <Star className="w-8 h-8 text-white" />
-                </div>
-              </div>
-              <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">
-                {siteWebPack.standard.title}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed text-sm">
-                {siteWebPack.standard.description}
-              </p>
-              <div className="mb-6">
-                <div className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">✓ Inclus dans ce pack :</div>
-                <ul className="space-y-2">
-                  {siteWebPack.standard.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start space-x-2">
-                      <CheckCircle className="w-4 h-4 text-slate-700 dark:text-slate-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-gray-700 dark:text-gray-300">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="border-t border-gray-200 dark:border-gray-800 pt-4 mb-6">
-                <div className="text-sm font-semibold text-gray-500 dark:text-gray-500 mb-2">✗ Non inclus :</div>
-                <ul className="space-y-1">
-                  {siteWebPack.standard.notIncluded.map((item, idx) => (
-                    <li key={idx} className="flex items-start space-x-2">
-                      <X className="w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-xs text-gray-500 dark:text-gray-500">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <Link href="/contact">
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full py-3 bg-slate-800 dark:bg-slate-700 hover:bg-slate-700 dark:hover:bg-slate-600 text-white rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all"
+          {/* Common Features */}
+          <div className="max-w-6xl mx-auto mb-8">
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+              {commonFeatures.map((feature, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className="flex items-center space-x-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg"
                 >
-                  Choisir Standard
-                </motion.button>
-              </Link>
-            </motion.div>
-
-            {/* Premium */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-slate-900 dark:bg-slate-800 border-2 border-slate-700 dark:border-slate-700 rounded-xl p-8 hover:shadow-xl transition-all relative"
-            >
-              <div className="absolute -top-4 left-6">
-                <span className="px-4 py-1.5 bg-white dark:bg-slate-700 text-slate-900 dark:text-white rounded-full text-xs font-bold shadow-lg">
-                  PREMIUM
-                </span>
-              </div>
-              <div className="flex items-center justify-end mb-6">
-                <div className="w-16 h-16 rounded-xl bg-white dark:bg-slate-700 flex items-center justify-center shadow-lg">
-                  <Crown className="w-8 h-8 text-slate-900 dark:text-white" />
-                </div>
-              </div>
-              <h3 className="text-2xl font-bold mb-2 text-white">
-                {siteWebPack.premium.title}
-              </h3>
-              <p className="text-slate-300 mb-6 leading-relaxed text-sm">
-                {siteWebPack.premium.description}
-              </p>
-              <div className="mb-6">
-                <div className="text-sm font-semibold text-slate-300 mb-3">✓ Tout du Standard + :</div>
-                <ul className="space-y-2 mb-4">
-                  {siteWebPack.standard.features.slice(0, 5).map((feature, idx) => (
-                    <li key={idx} className="flex items-start space-x-2">
-                      <CheckCircle className="w-4 h-4 text-slate-500 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-slate-400 line-through opacity-60">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="border-t border-slate-700 pt-4 mt-4">
-                  <div className="text-sm font-semibold text-slate-300 mb-3">+ Avantages Premium :</div>
-                  <ul className="space-y-2">
-                    {siteWebPack.premium.advantages.map((advantage, idx) => (
-                      <li key={idx} className="flex items-start space-x-2">
-                        <Zap className="w-4 h-4 text-slate-300 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-white font-semibold">{advantage}</span>
-                      </li>
-                    ))}
-                    {siteWebPack.premium.features.slice(5).map((feature, idx) => (
-                      <li key={idx} className="flex items-start space-x-2">
-                        <CheckCircle className="w-4 h-4 text-slate-300 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-200">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-              <Link href="/contact">
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full py-3 bg-white dark:bg-slate-700 hover:bg-slate-100 dark:hover:bg-slate-600 text-slate-900 dark:text-white rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all"
-                >
-                  Choisir Premium
-                </motion.button>
-              </Link>
-            </motion.div>
+                  <Check className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0" />
+                  <span className="text-sm sm:text-base font-medium text-gray-900 dark:text-white">
+                    {feature}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
 
-      {/* Pack Hébergement */}
-      <section className="py-20 bg-gray-50 dark:bg-dark border-t-2 border-gray-300 dark:border-gray-700">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-12"
-          >
-            <div className="flex items-center justify-center space-x-3 mb-4">
-              <Settings className="w-8 h-8 text-slate-700 dark:text-slate-300" />
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
-                Pack Hébergement
-              </h2>
-            </div>
-            <p className="text-center text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-8">
-              Hébergement sécurisé et maintenance pour votre site web
-            </p>
-            
-            {/* Comparison Header */}
-            <div className="max-w-5xl mx-auto mb-8">
-              <div className="grid grid-cols-2 gap-4 text-center">
-                <div className="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-200 dark:border-slate-800 relative">
-                  <div className="text-sm font-semibold text-slate-600 dark:text-slate-400 mb-1">FORMULE STANDARD</div>
-                  <div className="text-2xl font-bold text-gray-900 dark:text-white">25€/mois</div>
-                  <div className="text-xs text-gray-500 dark:text-gray-500 mt-1 mb-2">
-                    ou 17€/mois en annuel
-                  </div>
-                  <div className="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-full text-xs font-bold shadow-md">
-                    <span className="mr-1.5">💰</span>
-                    Économisez jusqu'à 32%
-                  </div>
-                </div>
-                <div className="p-4 bg-slate-900 dark:bg-slate-800 rounded-lg border border-slate-700 dark:border-slate-700 relative">
-                  <div className="text-sm font-semibold text-slate-300 mb-1">FORMULE PREMIUM</div>
-                  <div className="text-2xl font-bold text-white">60€/mois</div>
-                  <div className="text-xs text-slate-400 mt-1 mb-2">
-                    ou 40€/mois en annuel
-                  </div>
-                  <div className="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-full text-xs font-bold shadow-md">
-                    <span className="mr-1.5">💰</span>
-                    Économisez jusqu'à 33%
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* Standard */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="bg-white dark:bg-dark border-2 border-slate-300 dark:border-slate-700 rounded-xl p-8 hover:shadow-xl transition-all relative"
-            >
-              <div className="absolute -top-4 left-6">
-                <span className="px-4 py-1.5 bg-slate-800 dark:bg-slate-700 text-white rounded-full text-xs font-bold shadow-lg">
-                  STANDARD
-                </span>
-              </div>
-              <div className="flex items-center justify-end mb-6">
-                <div className="w-16 h-16 rounded-xl bg-slate-800 dark:bg-slate-700 flex items-center justify-center shadow-lg">
-                  <Shield className="w-8 h-8 text-white" />
-                </div>
-              </div>
-              <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">
-                {hostingPack.standard.title}
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed text-sm">
-                {hostingPack.standard.description}
-              </p>
-              <div className="mb-6">
-                <div className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">✓ Inclus dans ce pack :</div>
-                <ul className="space-y-2">
-                  {hostingPack.standard.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start space-x-2">
-                      <CheckCircle className="w-4 h-4 text-slate-700 dark:text-slate-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-gray-700 dark:text-gray-300">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="border-t border-gray-200 dark:border-gray-800 pt-4 mb-6">
-                <div className="text-sm font-semibold text-gray-500 dark:text-gray-500 mb-2">✗ Non inclus :</div>
-                <ul className="space-y-1">
-                  {hostingPack.standard.notIncluded.map((item, idx) => (
-                    <li key={idx} className="flex items-start space-x-2">
-                      <X className="w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-xs text-gray-500 dark:text-gray-500">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <Link href="/contact">
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full py-3 bg-slate-800 dark:bg-slate-700 hover:bg-slate-700 dark:hover:bg-slate-600 text-white rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all"
+          {/* Pricing Cards */}
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+              {pricingPlans.map((plan, index) => (
+                <motion.div
+                  key={plan.size}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className={`relative rounded-2xl p-6 sm:p-8 flex flex-col h-full transition-all duration-300 ${
+                    plan.popular
+                      ? 'bg-blue-900 dark:bg-blue-950 shadow-2xl scale-105 z-10'
+                      : 'bg-white dark:bg-dark border-2 border-gray-200 dark:border-gray-800 shadow-lg hover:shadow-xl'
+                  }`}
                 >
-                  Choisir Standard
-                </motion.button>
-              </Link>
-            </motion.div>
+                  {/* Plan Title */}
+                  <h3 className={`text-xl sm:text-2xl font-bold mb-3 ${
+                    plan.popular ? 'text-white' : 'text-gray-900 dark:text-white'
+                  }`}>
+                    {plan.title}
+                  </h3>
 
-            {/* Premium */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-slate-900 dark:bg-slate-800 border-2 border-slate-700 dark:border-slate-700 rounded-xl p-8 hover:shadow-xl transition-all relative"
-            >
-              <div className="absolute -top-4 left-6">
-                <span className="px-4 py-1.5 bg-white dark:bg-slate-700 text-slate-900 dark:text-white rounded-full text-xs font-bold shadow-lg">
-                  PREMIUM
-                </span>
-              </div>
-              <div className="flex items-center justify-end mb-6">
-                <div className="w-16 h-16 rounded-xl bg-white dark:bg-slate-700 flex items-center justify-center shadow-lg">
-                  <Crown className="w-8 h-8 text-slate-900 dark:text-white" />
-                </div>
-              </div>
-              <h3 className="text-2xl font-bold mb-2 text-white">
-                {hostingPack.premium.title}
-              </h3>
-              <p className="text-slate-300 mb-6 leading-relaxed text-sm">
-                {hostingPack.premium.description}
-              </p>
-              <div className="mb-6">
-                <div className="text-sm font-semibold text-slate-300 mb-3">✓ Tout du Standard + :</div>
-                <ul className="space-y-2 mb-4">
-                  {hostingPack.standard.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start space-x-2">
-                      <CheckCircle className="w-4 h-4 text-slate-500 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-slate-400 line-through opacity-60">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="border-t border-slate-700 pt-4 mt-4">
-                  <div className="text-sm font-semibold text-slate-300 mb-3">+ Avantages Premium :</div>
-                  <ul className="space-y-2">
-                    {hostingPack.premium.advantages.map((advantage, idx) => (
-                      <li key={idx} className="flex items-start space-x-2">
-                        <Zap className="w-4 h-4 text-slate-300 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-white font-semibold">{advantage}</span>
-                      </li>
-                    ))}
-                    {hostingPack.premium.features.slice(4).map((feature, idx) => (
-                      <li key={idx} className="flex items-start space-x-2">
-                        <CheckCircle className="w-4 h-4 text-slate-300 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-200">{feature}</span>
+                  {/* Description */}
+                  <p className={`text-sm mb-6 leading-relaxed ${
+                    plan.popular ? 'text-blue-100' : 'text-gray-600 dark:text-gray-400'
+                  }`}>
+                    {plan.description}
+                  </p>
+
+                  {/* Price */}
+                  <div className="mb-6 pb-6 border-b border-gray-200 dark:border-gray-700">
+                    <div className="flex items-baseline mb-2">
+                      <span className={`text-3xl sm:text-4xl font-bold ${
+                        plan.popular ? 'text-white' : 'text-gray-900 dark:text-white'
+                      }`}>
+                        Seulement {plan.priceMonthly}€ HT/mois
+                      </span>
+                    </div>
+                    <p className={`text-sm ${
+                      plan.popular ? 'text-blue-200' : 'text-gray-500 dark:text-gray-500'
+                    }`}>
+                      ({plan.priceMonthlyTTC} € TTC)
+                    </p>
+                  </div>
+
+                  {/* Setup Fee */}
+                  <div className="mb-6">
+                    <p className={`text-sm font-semibold ${
+                      plan.popular ? 'text-blue-200' : 'text-gray-700 dark:text-gray-300'
+                    }`}>
+                      Mise en service : {plan.setupFee} € HT
+                    </p>
+                    <p className={`text-xs mt-1 ${
+                      plan.popular ? 'text-blue-300' : 'text-gray-500 dark:text-gray-500'
+                    }`}>
+                      ({plan.setupFeeTTC} € TTC)
+                    </p>
+                  </div>
+
+                  {/* Features */}
+                  <ul className="space-y-4 mb-8 flex-1">
+                    {plan.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-start space-x-3">
+                        <Check className={`w-5 h-5 flex-shrink-0 mt-0.5 ${
+                          plan.popular 
+                            ? 'text-blue-300' 
+                            : 'text-blue-600 dark:text-blue-400'
+                        }`} />
+                        <div className="flex-1">
+                          <span className={`text-sm leading-relaxed ${
+                            plan.popular 
+                              ? 'text-white' 
+                              : 'text-gray-700 dark:text-gray-300'
+                          }`}>
+                            {feature}
+                          </span>
+                          {(feature.includes('modification') || feature.includes('pages')) && (
+                            <Info className={`w-4 h-4 inline-block ml-2 ${
+                              plan.popular 
+                                ? 'text-blue-300' 
+                                : 'text-gray-400 dark:text-gray-500'
+                            }`} />
+                          )}
+                        </div>
                       </li>
                     ))}
                   </ul>
-                </div>
-              </div>
-              <Link href="/contact">
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full py-3 bg-white dark:bg-slate-700 hover:bg-slate-100 dark:hover:bg-slate-600 text-slate-900 dark:text-white rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all"
-                >
-                  Choisir Premium
-                </motion.button>
-              </Link>
-            </motion.div>
+
+                  {/* CTA Button */}
+                  <Link href="/contact" className="mt-auto">
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className={`w-full py-3 rounded-lg font-semibold text-sm transition-all shadow-md hover:shadow-lg ${
+                        plan.popular
+                          ? 'bg-blue-600 hover:bg-blue-700 text-white'
+                          : 'bg-blue-600 hover:bg-blue-700 text-white'
+                      }`}
+                    >
+                      Continuer
+                    </motion.button>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Additional Info */}
+          <div className="mt-12 text-center max-w-4xl mx-auto">
+            <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-500 mb-4">
+              Les prix sont indiqués HT et TTC. Tous les packs incluent l'hébergement, la mise en ligne et un support client.
+            </p>
+            <Link href="/contact">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center space-x-2 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-lg font-semibold text-sm sm:text-base shadow-lg hover:shadow-xl transition-all"
+              >
+                <span>Demander un devis personnalisé</span>
+                <ArrowRight className="w-5 h-5" />
+              </motion.button>
+            </Link>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-white dark:from-dark dark:to-dark-light">
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-blue-50 via-white to-gray-50 dark:from-dark dark:via-dark-light dark:to-dark">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="max-w-3xl mx-auto text-center bg-white dark:bg-dark-light border-2 border-gray-200 dark:border-gray-800 rounded-2xl p-12 shadow-xl"
+            className="max-w-4xl mx-auto text-center"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white px-4">
-              Besoin d'Aide pour Choisir ?
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white px-4">
+              Besoin d'une Solution Sur-Mesure ?
             </h2>
-            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-6 sm:mb-8 leading-relaxed px-4">
-              Discutons de vos besoins et obtenez un devis gratuit et personnalisé pour trouver la formule qui vous convient.
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-6 sm:mb-8 md:mb-10 leading-relaxed px-4">
+              Chaque projet est unique. Contactez-moi pour discuter de vos besoins spécifiques 
+              et obtenir un devis personnalisé adapté à votre entreprise.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-slate-800 dark:bg-slate-700 hover:bg-slate-700 dark:hover:bg-slate-600 text-white rounded-lg font-semibold text-base shadow-lg hover:shadow-xl transition-all flex items-center space-x-2"
+                  className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-lg font-semibold text-sm sm:text-base shadow-lg hover:shadow-xl transition-all flex items-center space-x-2"
                 >
-                  <span>Demander un devis gratuit</span>
+                  <span>Demander un devis personnalisé</span>
                   <ArrowRight className="w-5 h-5" />
+                </motion.button>
+              </Link>
+              <Link href="/portfolio">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-6 sm:px-8 py-3 sm:py-4 bg-white dark:bg-dark-light border-2 border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white rounded-lg font-semibold text-sm sm:text-base hover:bg-gray-50 dark:hover:bg-gray-800 transition-all"
+                >
+                  Voir mes réalisations
                 </motion.button>
               </Link>
             </div>

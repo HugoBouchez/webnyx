@@ -4,17 +4,17 @@ import DemoLayout from '@/components/portfolio/DemoLayout'
 import EcommerceDemo from '@/components/portfolio/demos/EcommerceDemo'
 import VitrineDemo from '@/components/portfolio/demos/VitrineDemo'
 import PortfolioDemo from '@/components/portfolio/demos/PortfolioDemo'
-import BlogDemo from '@/components/portfolio/demos/BlogDemo'
 import LandingDemo from '@/components/portfolio/demos/LandingDemo'
-import SaasDemo from '@/components/portfolio/demos/SaasDemo'
+import DentisteDemo from '@/components/portfolio/demos/DentisteDemo'
+import AssuranceDemo from '@/components/portfolio/demos/AssuranceDemo'
 
 const demoComponents: Record<string, React.ComponentType> = {
   'site-ecommerce-moderne': EcommerceDemo,
   'site-vitrine-entreprise': VitrineDemo,
   'portfolio-creatif': PortfolioDemo,
-  'blog-professionnel': BlogDemo,
   'landing-page-marketing': LandingDemo,
-  'application-web-saas': SaasDemo,
+  'site-dentiste-professionnel': DentisteDemo,
+  'site-courtier-assurance': AssuranceDemo,
 }
 
 export default function DemoPageClient({ slug }: { slug: string }) {

@@ -5,6 +5,24 @@ import PortfolioCard from '@/components/PortfolioCard'
 
 const portfolioProjects = [
   {
+    title: 'Site Web Courtier en Assurance',
+    slug: 'site-courtier-assurance',
+    description: 'Site web professionnel pour courtier en assurance avec demande de devis en ligne, présentation des produits et gestion des sinistres.',
+    image: '/image/Image preview courtier.png',
+  },
+  {
+    title: 'Site Web Dentiste Professionnel',
+    slug: 'site-dentiste-professionnel',
+    description: 'Site web ultra-professionnel pour cabinet dentaire avec présentation des services, équipe, témoignages et prise de rendez-vous.',
+    image: '/image/Image preview dentiste.png',
+  },
+  {
+    title: 'Landing Page Marketing',
+    slug: 'landing-page-marketing',
+    description: 'Landing page optimisée pour la conversion avec formulaires, animations et tracking des performances.',
+    image: '/plombier-image.png',
+  },
+  {
     title: 'Site Web Notaire',
     slug: 'portfolio-creatif',
     description: 'Site web professionnel pour étude notariale avec présentation des services, actualités juridiques et prise de rendez-vous.',
@@ -21,24 +39,6 @@ const portfolioProjects = [
     slug: 'site-ecommerce-moderne',
     description: 'Plateforme e-commerce complète avec gestion de commandes, panier, et paiement sécurisé. Design moderne et responsive.',
     image: '/ecommerce-image.png',
-  },
-  {
-    title: 'Application Web SaaS',
-    slug: 'application-web-saas',
-    description: 'Application web complète avec tableau de bord, authentification et gestion des utilisateurs.',
-    image: '/saas-image.png',
-  },
-  {
-    title: 'Blog Professionnel',
-    slug: 'blog-professionnel',
-    description: 'Blog moderne avec système de gestion de contenu, catégories et recherche avancée.',
-    image: '/blog-image.png',
-  },
-  {
-    title: 'Landing Page Marketing',
-    slug: 'landing-page-marketing',
-    description: 'Landing page optimisée pour la conversion avec formulaires, animations et tracking des performances.',
-    image: '/plombier-image.png',
   },
 ]
 

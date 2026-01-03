@@ -4,9 +4,9 @@ const demoSlugs = [
   'site-ecommerce-moderne',
   'site-vitrine-entreprise',
   'portfolio-creatif',
-  'blog-professionnel',
   'landing-page-marketing',
-  'application-web-saas',
+  'site-dentiste-professionnel',
+  'site-courtier-assurance',
 ]
 
 // Required for static export - must be in server component
