@@ -17,6 +17,18 @@ const portfolioProjects = [
     image: '/image/Image preview dentiste.png',
   },
   {
+    title: 'Site Web Pizzeria Bella Pizza',
+    slug: 'pizzeria-bella-pizza',
+    description: 'Site web moderne pour pizzeria avec menu complet, sélection de vins, témoignages clients et réservation en ligne. Design appétissant et professionnel.',
+    image: '/image/Image pizzeria.png',
+  },
+  {
+    title: 'Site Web Salon de Coiffure Élégance',
+    slug: 'salon-coiffure-elegance',
+    description: 'Site web élégant pour salon de coiffure avec présentation des prestations, tarifs, produits et prise de rendez-vous. Design premium et professionnel.',
+    image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&h=600&fit=crop',
+  },
+  {
     title: 'Landing Page Marketing',
     slug: 'landing-page-marketing',
     description: 'Landing page optimisée pour la conversion avec formulaires, animations et tracking des performances.',

@@ -7,6 +7,8 @@ const demoSlugs = [
   'landing-page-marketing',
   'site-dentiste-professionnel',
   'site-courtier-assurance',
+  'pizzeria-bella-pizza',
+  'salon-coiffure-elegance',
 ]
 
 // Required for static export - must be in server component

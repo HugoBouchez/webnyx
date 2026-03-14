@@ -7,6 +7,8 @@ import PortfolioDemo from '@/components/portfolio/demos/PortfolioDemo'
 import LandingDemo from '@/components/portfolio/demos/LandingDemo'
 import DentisteDemo from '@/components/portfolio/demos/DentisteDemo'
 import AssuranceDemo from '@/components/portfolio/demos/AssuranceDemo'
+import PizzeriaDemo from '@/components/portfolio/demos/PizzeriaDemo'
+import CoiffureDemo from '@/components/portfolio/demos/CoiffureDemo'
 
 const demoComponents: Record<string, React.ComponentType> = {
   'site-ecommerce-moderne': EcommerceDemo,
@@ -15,6 +17,8 @@ const demoComponents: Record<string, React.ComponentType> = {
   'landing-page-marketing': LandingDemo,
   'site-dentiste-professionnel': DentisteDemo,
   'site-courtier-assurance': AssuranceDemo,
+  'pizzeria-bella-pizza': PizzeriaDemo,
+  'salon-coiffure-elegance': CoiffureDemo,
 }
 
 export default function DemoPageClient({ slug }: { slug: string }) {

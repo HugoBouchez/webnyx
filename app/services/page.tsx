@@ -16,9 +16,7 @@ const pricingPlans = [
     title: 'Service de conception de site Web S',
     description: 'Idéal pour un site simple nécessitant peu de modifications',
     priceMonthly: 25,
-    priceMonthlyTTC: 30,
-    setupFee: 199,
-    setupFeeTTC: 238.80,
+    setupFee: 349,
     features: [
       'Conseils de nos experts + création de 3 pages personnalisées',
       '1 modification du site par trimestre',
@@ -31,9 +29,7 @@ const pricingPlans = [
     title: 'Service de conception de site Web M',
     description: 'Idéal pour un site de taille moyenne nécessitant des modifications régulières',
     priceMonthly: 40,
-    priceMonthlyTTC: 48,
-    setupFee: 299,
-    setupFeeTTC: 358.80,
+    setupFee: 499,
     features: [
       'Conseils de nos experts + création de 5 pages personnalisées',
       '1 modification du site par mois',
@@ -46,9 +42,7 @@ const pricingPlans = [
     title: 'Service de conception de site Web L',
     description: 'Idéal pour un site de grande envergure nécessitant des modifications fréquentes',
     priceMonthly: 70,
-    priceMonthlyTTC: 84,
-    setupFee: 399,
-    setupFeeTTC: 478.80,
+    setupFee: 899,
     features: [
       'Conseils de nos experts + création de 7 pages personnalisées',
       'Modifications du site illimitées',
@@ -103,7 +97,7 @@ export default function Services() {
                     <p className="text-sm text-gray-600 dark:text-gray-400">
                       Design personnalisé, création de pages, développement UX, formulaire de contact
                     </p>
-                  </div>
+              </div>
                 </div>
                 <div className="flex items-start space-x-3">
                   <Check className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-1" />
@@ -112,7 +106,7 @@ export default function Services() {
                     <p className="text-sm text-gray-600 dark:text-gray-400">
                       Hébergement haute performance, déploiement, sauvegarde automatique, support technique
                     </p>
-                  </div>
+              </div>
                 </div>
               </div>
             </motion.div>
@@ -127,11 +121,11 @@ export default function Services() {
           <div className="max-w-6xl mx-auto mb-8">
             <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
               {commonFeatures.map((feature, index) => (
-                <motion.div
+          <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
                   className="flex items-center space-x-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 rounded-lg"
                 >
@@ -141,18 +135,18 @@ export default function Services() {
                   </span>
                 </motion.div>
               ))}
+              </div>
             </div>
-          </div>
 
           {/* Pricing Cards */}
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
               {pricingPlans.map((plan, index) => (
-                <motion.div
+            <motion.div
                   key={plan.size}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className={`relative rounded-2xl p-6 sm:p-8 flex flex-col h-full transition-all duration-300 ${
                     plan.popular
@@ -181,28 +175,18 @@ export default function Services() {
                         plan.popular ? 'text-white' : 'text-gray-900 dark:text-white'
                       }`}>
                         Seulement {plan.priceMonthly}€ HT/mois
-                      </span>
-                    </div>
-                    <p className={`text-sm ${
-                      plan.popular ? 'text-blue-200' : 'text-gray-500 dark:text-gray-500'
-                    }`}>
-                      ({plan.priceMonthlyTTC} € TTC)
-                    </p>
-                  </div>
+                </span>
+              </div>
+                </div>
 
                   {/* Setup Fee */}
-                  <div className="mb-6">
+              <div className="mb-6">
                     <p className={`text-sm font-semibold ${
                       plan.popular ? 'text-blue-200' : 'text-gray-700 dark:text-gray-300'
                     }`}>
                       Mise en service : {plan.setupFee} € HT
                     </p>
-                    <p className={`text-xs mt-1 ${
-                      plan.popular ? 'text-blue-300' : 'text-gray-500 dark:text-gray-500'
-                    }`}>
-                      ({plan.setupFeeTTC} € TTC)
-                    </p>
-                  </div>
+              </div>
 
                   {/* Features */}
                   <ul className="space-y-4 mb-8 flex-1">
@@ -220,7 +204,7 @@ export default function Services() {
                               : 'text-gray-700 dark:text-gray-300'
                           }`}>
                             {feature}
-                          </span>
+                </span>
                           {(feature.includes('modification') || feature.includes('pages')) && (
                             <Info className={`w-4 h-4 inline-block ml-2 ${
                               plan.popular 
@@ -228,26 +212,26 @@ export default function Services() {
                                 : 'text-gray-400 dark:text-gray-500'
                             }`} />
                           )}
-                        </div>
+              </div>
                       </li>
                     ))}
                   </ul>
 
                   {/* CTA Button */}
                   <Link href="/contact" className="mt-auto">
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                       className={`w-full py-3 rounded-lg font-semibold text-sm transition-all shadow-md hover:shadow-lg ${
                         plan.popular
                           ? 'bg-blue-600 hover:bg-blue-700 text-white'
                           : 'bg-blue-600 hover:bg-blue-700 text-white'
                       }`}
-                    >
+                >
                       Continuer
-                    </motion.button>
-                  </Link>
-                </motion.div>
+                </motion.button>
+              </Link>
+            </motion.div>
               ))}
             </div>
           </div>
@@ -255,7 +239,7 @@ export default function Services() {
           {/* Additional Info */}
           <div className="mt-12 text-center max-w-4xl mx-auto">
             <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-500 mb-4">
-              Les prix sont indiqués HT et TTC. Tous les packs incluent l'hébergement, la mise en ligne et un support client.
+              Les prix sont indiqués HT. Tous les packs incluent l'hébergement, la mise en ligne et un support client.
             </p>
             <Link href="/contact">
               <motion.button

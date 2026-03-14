@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowRight, CheckCircle, Code, RefreshCw, Palette, Settings } from 'lucide-react'
+import { ArrowRight, CheckCircle, Code, RefreshCw, Palette, Settings, ChevronRight, ChevronDown } from 'lucide-react'
 import PortfolioCard from '@/components/PortfolioCard'
 import Image from 'next/image'
 import { getImagePath } from '@/lib/imagePath'
@@ -11,21 +11,51 @@ import { useState, useEffect } from 'react'
 
 const featuredPortfolio = [
   {
+    title: 'Site Web Courtier en Assurance',
+    slug: 'site-courtier-assurance',
+    description: 'Site web professionnel pour courtier en assurance avec demande de devis en ligne, présentation des produits et gestion des sinistres.',
+    image: '/image/Image preview courtier.png',
+  },
+  {
+    title: 'Site Web Dentiste Professionnel',
+    slug: 'site-dentiste-professionnel',
+    description: 'Site web ultra-professionnel pour cabinet dentaire avec présentation des services, équipe, témoignages et prise de rendez-vous.',
+    image: '/image/Image preview dentiste.png',
+  },
+  {
+    title: 'Site Web Pizzeria Bella Pizza',
+    slug: 'pizzeria-bella-pizza',
+    description: 'Site web moderne pour pizzeria avec menu complet, sélection de vins, témoignages clients et réservation en ligne. Design appétissant et professionnel.',
+    image: '/image/Image pizzeria.png',
+  },
+  {
+    title: 'Site Web Salon de Coiffure Élégance',
+    slug: 'salon-coiffure-elegance',
+    description: 'Site web élégant pour salon de coiffure avec présentation des prestations, tarifs, produits et prise de rendez-vous. Design premium et professionnel.',
+    image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&h=600&fit=crop',
+  },
+  {
+    title: 'Landing Page Marketing',
+    slug: 'landing-page-marketing',
+    description: 'Landing page optimisée pour la conversion avec formulaires, animations et tracking des performances.',
+    image: '/plombier-image.png',
+  },
+  {
     title: 'Site Web Notaire',
     slug: 'portfolio-creatif',
-    description: 'Site web professionnel pour étude notariale avec services juridiques et actualités.',
+    description: 'Site web professionnel pour étude notariale avec présentation des services, actualités juridiques et prise de rendez-vous.',
     image: '/notaire-image.png',
   },
   {
     title: 'Site Web Coach Indépendant',
     slug: 'site-vitrine-entreprise',
-    description: 'Site web professionnel pour coach indépendant avec présentation des services et réservation.',
+    description: 'Site web professionnel pour coach indépendant avec présentation des services, réservation en ligne et témoignages clients.',
     image: '/coach-image.png',
   },
   {
     title: 'Site E-commerce Moderne',
     slug: 'site-ecommerce-moderne',
-    description: 'Plateforme e-commerce complète avec gestion de commandes et paiement sécurisé.',
+    description: 'Plateforme e-commerce complète avec gestion de commandes, panier, et paiement sécurisé. Design moderne et responsive.',
     image: '/ecommerce-image.png',
   },
 ]
@@ -431,6 +461,235 @@ export default function Home() {
               </motion.button>
             </Link>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Process Steps */}
+      <section className="py-16 sm:py-24 md:py-32 bg-gradient-to-b from-gray-50 to-white dark:from-dark dark:to-dark-light">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="text-center mb-16 max-w-3xl mx-auto"
+          >
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white px-4">
+              Le Chemin de la{' '}
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                Construction de Votre Site
+              </span>
+            </h2>
+            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed px-4">
+              Un processus structuré et professionnel pour créer un site web qui répond parfaitement à vos besoins.
+            </p>
+          </motion.div>
+
+          <div className="max-w-7xl mx-auto">
+            {/* Desktop: Horizontal Path */}
+            <div className="hidden lg:flex items-center justify-between gap-4">
+              {/* Step 1 */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="flex-1 relative bg-white dark:bg-dark border-2 border-gray-200 dark:border-gray-800 rounded-xl p-6 hover:shadow-xl transition-all duration-300"
+              >
+                <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-primary to-accent text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl shadow-lg z-10">
+                  1
+                </div>
+                <div className="pt-6">
+                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
+                    Structure et design du site web
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    Création de l'architecture et du design visuel de votre site web. Définition de la structure, de la navigation et de l'identité visuelle pour une expérience utilisateur optimale.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Arrow 1 */}
+              <div className="flex-shrink-0 text-primary dark:text-accent">
+                <ChevronRight className="w-8 h-8" />
+              </div>
+
+              {/* Step 2 */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="flex-1 relative bg-white dark:bg-dark border-2 border-gray-200 dark:border-gray-800 rounded-xl p-6 hover:shadow-xl transition-all duration-300"
+              >
+                <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-primary to-accent text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl shadow-lg z-10">
+                  2
+                </div>
+                <div className="pt-6">
+                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
+                    Création du contenu de votre site internet
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    Rédaction et intégration de tous les contenus textuels, images et médias de votre site. Adaptation du contenu à votre identité de marque et à vos objectifs de communication.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Arrow 2 */}
+              <div className="flex-shrink-0 text-primary dark:text-accent">
+                <ChevronRight className="w-8 h-8" />
+              </div>
+
+              {/* Step 3 */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="flex-1 relative bg-white dark:bg-dark border-2 border-gray-200 dark:border-gray-800 rounded-xl p-6 hover:shadow-xl transition-all duration-300"
+              >
+                <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-primary to-accent text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl shadow-lg z-10">
+                  3
+                </div>
+                <div className="pt-6">
+                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
+                    Optimisation du référencement naturel
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    Optimisation technique et contenu pour améliorer votre visibilité sur les moteurs de recherche. Mise en place des bonnes pratiques SEO pour augmenter votre trafic naturel.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Arrow 3 */}
+              <div className="flex-shrink-0 text-primary dark:text-accent">
+                <ChevronRight className="w-8 h-8" />
+              </div>
+
+              {/* Step 4 */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="flex-1 relative bg-white dark:bg-dark border-2 border-gray-200 dark:border-gray-800 rounded-xl p-6 hover:shadow-xl transition-all duration-300"
+              >
+                <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-primary to-accent text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl shadow-lg z-10">
+                  4
+                </div>
+                <div className="pt-6">
+                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
+                    Mise en ligne et suivi après création du site internet
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    Hébergement, déploiement et mise en ligne de votre site web. Accompagnement et suivi continu pour garantir le bon fonctionnement et l'évolution de votre présence en ligne.
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Mobile: Vertical Path */}
+            <div className="lg:hidden space-y-8">
+              {/* Step 1 */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="relative bg-white dark:bg-dark border-2 border-gray-200 dark:border-gray-800 rounded-xl p-6"
+              >
+                <div className="absolute -left-5 top-6 bg-gradient-to-r from-primary to-accent text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl shadow-lg z-10">
+                  1
+                </div>
+                <div className="ml-8">
+                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
+                    Structure et design du site web
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    Création de l'architecture et du design visuel de votre site web. Définition de la structure, de la navigation et de l'identité visuelle pour une expérience utilisateur optimale.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Arrow 1 */}
+              <div className="flex justify-center text-primary dark:text-accent">
+                <ChevronDown className="w-8 h-8" />
+              </div>
+
+              {/* Step 2 */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="relative bg-white dark:bg-dark border-2 border-gray-200 dark:border-gray-800 rounded-xl p-6"
+              >
+                <div className="absolute -left-5 top-6 bg-gradient-to-r from-primary to-accent text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl shadow-lg z-10">
+                  2
+                </div>
+                <div className="ml-8">
+                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
+                    Création du contenu de votre site internet
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    Rédaction et intégration de tous les contenus textuels, images et médias de votre site. Adaptation du contenu à votre identité de marque et à vos objectifs de communication.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Arrow 2 */}
+              <div className="flex justify-center text-primary dark:text-accent">
+                <ChevronDown className="w-8 h-8" />
+              </div>
+
+              {/* Step 3 */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="relative bg-white dark:bg-dark border-2 border-gray-200 dark:border-gray-800 rounded-xl p-6"
+              >
+                <div className="absolute -left-5 top-6 bg-gradient-to-r from-primary to-accent text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl shadow-lg z-10">
+                  3
+                </div>
+                <div className="ml-8">
+                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
+                    Optimisation du référencement naturel
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    Optimisation technique et contenu pour améliorer votre visibilité sur les moteurs de recherche. Mise en place des bonnes pratiques SEO pour augmenter votre trafic naturel.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Arrow 3 */}
+              <div className="flex justify-center text-primary dark:text-accent">
+                <ChevronDown className="w-8 h-8" />
+              </div>
+
+              {/* Step 4 */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="relative bg-white dark:bg-dark border-2 border-gray-200 dark:border-gray-800 rounded-xl p-6"
+              >
+                <div className="absolute -left-5 top-6 bg-gradient-to-r from-primary to-accent text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl shadow-lg z-10">
+                  4
+                </div>
+                <div className="ml-8">
+                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
+                    Mise en ligne et suivi après création du site internet
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                    Hébergement, déploiement et mise en ligne de votre site web. Accompagnement et suivi continu pour garantir le bon fonctionnement et l'évolution de votre présence en ligne.
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
