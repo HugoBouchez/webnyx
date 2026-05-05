@@ -87,10 +87,8 @@ const hostingPlans = [
     description: 'La tranquillité d\'esprit complète, avec un suivi actif de votre site.',
     features: [
       'Tout du plan Essentiel',
-      'Modifications illimitées',
-      'Mises à jour de contenu',
-      'Rapport mensuel de performance',
-      'Support prioritaire 7j/7',
+      '1 modification de contenu incluse par mois',
+      'Support prioritaire, réponse sous 48h',
     ],
   },
 ]
