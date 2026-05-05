@@ -11,12 +11,12 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#3b82f6',
-          dark: '#2563eb',
+          DEFAULT: '#1E3A5F',
+          dark: '#142847',
         },
         accent: {
-          DEFAULT: '#8b5cf6',
-          dark: '#7c3aed',
+          DEFAULT: '#2D5F8A',
+          dark: '#1E3A5F',
         },
         dark: {
           DEFAULT: '#0F0F0F',
@@ -25,6 +25,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-cormorant)', 'Georgia', 'serif'],
       },
     },
   },

@@ -23,7 +23,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold tracking-tight;
+    @apply font-display font-bold tracking-tight;
     font-feature-settings: 'kern' 1;
   }
 }
@@ -61,11 +61,13 @@ html {
 
 /* Selection */
 ::selection {
-  @apply bg-primary/20 text-gray-900 dark:text-white;
+  background-color: #F0E2C4;
+  color: #1a1a1a;
 }
 
 ::-moz-selection {
-  @apply bg-primary/20 text-gray-900 dark:text-white;
+  background-color: #F0E2C4;
+  color: #1a1a1a;
 }
 
 /* Focus visible */

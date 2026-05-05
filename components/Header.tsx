@@ -2,14 +2,15 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Sun, Moon, Code2 } from 'lucide-react'
+import { Menu, X, Sun, Moon } from 'lucide-react'
 import { useTheme } from '@/components/ThemeProvider'
 
 const navItems = [
   { name: 'Accueil', href: '/' },
-  { name: 'Mes réalisations', href: '/portfolio' },
-  { name: 'Prix & Services', href: '/services' },
+  { name: 'Services & Prix', href: '/services' },
+  { name: 'Réalisations', href: '/portfolio' },
   { name: 'Contact', href: '/contact' },
 ]
 
@@ -17,123 +18,93 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const { theme, toggleTheme } = useTheme()
+  const pathname = usePathname()
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
-    }
-    window.addEventListener('scroll', handleScroll)
+    const handleScroll = () => setIsScrolled(window.scrollY > 10)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.4 }}
+    <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white dark:bg-dark shadow-lg border-b border-gray-200 dark:border-gray-800'
-          : 'bg-white/95 dark:bg-dark/95 backdrop-blur-xl shadow-md border-b border-gray-200/50 dark:border-gray-800/50'
+          ? 'bg-white dark:bg-dark border-b border-gray-100 dark:border-gray-800/60 shadow-sm'
+          : 'bg-white dark:bg-dark'
       }`}
     >
-      <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-3 items-center h-20">
-          {/* Logo - Left */}
-          <div className="flex justify-start">
-            <Link href="/" className="flex items-center space-x-3 group">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="relative"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-lg blur opacity-20 group-hover:opacity-40 transition-opacity" />
-                <div className="relative w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center shadow-md">
-                  <Code2 className="w-6 h-6 text-white" />
-                </div>
-              </motion.div>
-              <div className="flex flex-col">
-                <span className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white leading-tight">
-                  Webnyx
-                </span>
-                <span className="text-[10px] sm:text-xs text-gray-600 dark:text-gray-400 font-medium">
-                  Expert
-                </span>
-              </div>
-            </Link>
-          </div>
+      <nav className="container mx-auto px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
 
-          {/* Desktop Navigation - Center */}
-          <div className="hidden md:flex items-center justify-center space-x-1 bg-white/80 dark:bg-dark/80 backdrop-blur-md rounded-xl px-2 py-1 border border-gray-200 dark:border-gray-700 shadow-sm">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="px-4 py-2 text-gray-900 dark:text-gray-100 hover:text-primary dark:hover:text-accent transition-colors font-semibold text-sm rounded-lg"
-              >
-                <motion.span
-                  whileHover={{ y: -2 }}
-                  className="block"
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2.5 group flex-shrink-0">
+            <div className="w-8 h-8 bg-primary rounded-md flex items-center justify-center">
+              <span className="text-white font-bold text-sm tracking-tight">W</span>
+            </div>
+            <span className="font-bold text-gray-900 dark:text-white text-[15px] tracking-tight">
+              Webnyx
+            </span>
+          </Link>
+
+          {/* Nav Desktop */}
+          <div className="hidden md:flex items-center gap-1">
+            {navItems.map((item) => {
+              const isActive = pathname === item.href
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`relative px-4 py-2 text-sm font-medium rounded-md transition-colors duration-150 ${
+                    isActive
+                      ? 'text-gray-900 dark:text-white'
+                      : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                  }`}
                 >
                   {item.name}
-                </motion.span>
-              </Link>
-            ))}
+                  {isActive && (
+                    <motion.div
+                      layoutId="nav-indicator"
+                      className="absolute bottom-0.5 left-4 right-4 h-0.5 bg-primary rounded-full"
+                    />
+                  )}
+                </Link>
+              )
+            })}
           </div>
 
-          {/* Actions - Right */}
-          <div className="hidden md:flex items-center justify-end space-x-3">
-            <motion.button
+          {/* Actions */}
+          <div className="hidden md:flex items-center gap-2 flex-shrink-0">
+            <button
               onClick={toggleTheme}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="p-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors border border-gray-200 dark:border-gray-700"
-              aria-label="Toggle theme"
+              className="p-2 rounded-md text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+              aria-label="Changer le thème"
             >
-              {theme === 'light' ? (
-                <Moon className="w-5 h-5 text-gray-900 dark:text-gray-100" />
-              ) : (
-                <Sun className="w-5 h-5 text-gray-900 dark:text-gray-100" />
-              )}
-            </motion.button>
+              {theme === 'light' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
+            </button>
             <Link href="/contact">
-              <motion.button
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-4 py-2.5 bg-gradient-to-r from-primary to-accent text-white rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 text-sm whitespace-nowrap"
-              >
-                Demander un devis
-              </motion.button>
+              <button className="px-4 py-2 bg-primary hover:bg-primary-dark text-white text-sm font-semibold rounded-md transition-colors duration-150">
+                Devis gratuit
+              </button>
             </Link>
           </div>
 
-          {/* Mobile Menu Button - Right */}
-          <div className="md:hidden col-start-3 flex items-center justify-end space-x-2">
-            <motion.button
+          {/* Mobile */}
+          <div className="md:hidden flex items-center gap-1">
+            <button
               onClick={toggleTheme}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-              aria-label="Toggle theme"
+              className="p-2 text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md transition-colors"
+              aria-label="Thème"
             >
-              {theme === 'light' ? (
-                <Moon className="w-5 h-5 text-gray-900 dark:text-gray-100" />
-              ) : (
-                <Sun className="w-5 h-5 text-gray-900 dark:text-gray-100" />
-              )}
-            </motion.button>
-            <motion.button
+              {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
+            </button>
+            <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              whileTap={{ scale: 0.95 }}
-              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-              aria-label="Toggle menu"
+              className="p-2 text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md transition-colors"
+              aria-label="Menu"
             >
-              {isMobileMenuOpen ? (
-                <X className="w-6 h-6 text-gray-900 dark:text-gray-100" />
-              ) : (
-                <Menu className="w-6 h-6 text-gray-900 dark:text-gray-100" />
-              )}
-            </motion.button>
+              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
           </div>
         </div>
       </nav>
@@ -142,46 +113,41 @@ export default function Header() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-white dark:bg-dark border-t border-gray-200 dark:border-gray-800 shadow-lg"
+            initial={{ opacity: 0, y: -4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            transition={{ duration: 0.15 }}
+            className="md:hidden border-t border-gray-100 dark:border-gray-800 bg-white dark:bg-dark"
           >
-            <div className="container mx-auto px-4 py-6 space-y-2">
-              {navItems.map((item, index) => (
-                <motion.div
-                  key={item.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
+            <div className="container mx-auto px-6 py-3 flex flex-col gap-0.5">
+              {navItems.map((item) => {
+                const isActive = pathname === item.href
+                return (
                   <Link
+                    key={item.href}
                     href={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block py-3 px-4 text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors font-semibold"
+                    className={`py-2.5 px-3 rounded-md text-sm font-medium transition-colors ${
+                      isActive
+                        ? 'text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-800'
+                        : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800'
+                    }`}
                   >
                     {item.name}
                   </Link>
-                </motion.div>
-              ))}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: navItems.length * 0.1 }}
+                )
+              })}
+              <Link
+                href="/contact"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="mt-2 py-2.5 px-3 bg-primary hover:bg-primary-dark text-white text-sm font-semibold rounded-md text-center transition-colors"
               >
-                <Link
-                  href="/contact"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block py-3 px-4 bg-gradient-to-r from-primary to-accent text-white rounded-lg font-semibold text-center mt-4 shadow-lg"
-                >
-                  Demander un devis
-                </Link>
-              </motion.div>
+                Devis gratuit
+              </Link>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   )
 }

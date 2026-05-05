@@ -2,12 +2,12 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowRight, CheckCircle, Code, RefreshCw, Palette, Settings, ChevronRight, ChevronDown } from 'lucide-react'
+import { ArrowRight, CheckCircle, Code, RefreshCw, Palette, Settings } from 'lucide-react'
 import PortfolioCard from '@/components/PortfolioCard'
 import Image from 'next/image'
 import { getImagePath } from '@/lib/imagePath'
 import ServiceModal from '@/components/ServiceModal'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 const featuredPortfolio = [
   {
@@ -64,6 +64,7 @@ const services = [
   {
     icon: Code,
     title: 'Création de site vitrine',
+    price: 'À partir de 749 €',
     description: 'Sites vitrines modernes et personnalisés pour présenter votre activité, vos services et votre image professionnelle en ligne.',
     color: 'from-blue-500 to-cyan-500',
     modalContent: {
@@ -82,6 +83,7 @@ const services = [
   {
     icon: RefreshCw,
     title: 'Refonte de site',
+    price: 'À partir de 749 €',
     description: 'Refonte et modernisation de votre site existant pour améliorer son design, sa clarté et son adaptation aux supports actuels.',
     color: 'from-purple-500 to-pink-500',
     modalContent: {
@@ -99,25 +101,27 @@ const services = [
   },
   {
     icon: Palette,
-    title: 'Design UI/UX',
-    description: 'Conception d\'interfaces esthétiques et intuitives pour une navigation fluide et une expérience utilisateur agréable.',
+    title: 'Site E-Commerce',
+    price: 'À partir de 1 899 €',
+    description: 'Boutique en ligne complète avec catalogue produits, paiement sécurisé et gestion des commandes pour vendre sans dépendre d\'une plateforme.',
     color: 'from-orange-500 to-red-500',
     modalContent: {
-      title: 'Design UI/UX',
-      description: 'Concevez des interfaces centrées utilisateur avec des parcours fluides, une esthétique moderne, une meilleure lisibilité et une augmentation du taux de conversion.',
+      title: 'Site E-Commerce',
+      description: 'Lancez votre boutique en ligne sur mesure avec une gestion complète des produits, un paiement sécurisé et un design optimisé pour la conversion.',
       details: [
-        'Interfaces intuitives et faciles à utiliser pour une expérience optimale',
-        'Parcours utilisateur fluides et logiques pour guider naturellement vos visiteurs',
-        'Esthétique moderne et professionnelle qui reflète votre image de marque',
-        'Meilleure lisibilité et hiérarchie visuelle pour une compréhension immédiate',
-        'Augmentation du taux de conversion grâce à un design optimisé pour l\'action',
-        'Tests et itérations pour garantir la meilleure expérience possible',
+        'Boutique en ligne complète avec catalogue produits illimité',
+        'Paiement sécurisé intégré (Stripe, PayPal…)',
+        'Gestion des commandes et des stocks en temps réel',
+        'Pages produits optimisées pour la conversion',
+        'SEO e-commerce avancé pour attirer du trafic qualifié',
+        'Design responsive et rapide sur tous les appareils',
       ],
     },
   },
   {
     icon: Settings,
     title: 'Maintenance & hébergement',
+    price: 'À partir de 35 €/mois',
     description: 'Hébergement sécurisé et maintenance régulière pour garantir le bon fonctionnement et la sécurité de votre site.',
     color: 'from-green-500 to-emerald-500',
     modalContent: {
@@ -137,304 +141,190 @@ const services = [
 
 export default function Home() {
   const [selectedService, setSelectedService] = useState<number | null>(null)
-  const [scrollProgress, setScrollProgress] = useState(0)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const heroSection = document.getElementById('hero-section')
-      if (heroSection) {
-        const scrollPosition = window.scrollY
-        const heroHeight = heroSection.offsetHeight
-        // Calcul du progrès du scroll (0 à 1) dans la section hero
-        const progress = Math.min(1, Math.max(0, scrollPosition / (heroHeight * 0.6)))
-        setScrollProgress(progress)
-      }
-    }
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    handleScroll() // Appel initial
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  const openModal = (index: number) => {
-    setSelectedService(index)
-  }
-
-  const closeModal = () => {
-    setSelectedService(null)
-  }
 
   return (
     <div>
-      {/* Hero Section - Full Screen with Background Image */}
-      <section 
-        id="hero-section"
-        className="relative h-screen min-h-[600px] sm:min-h-[700px] flex items-center justify-center overflow-hidden pt-20"
-      >
-        {/* Background Image */}
+
+      {/* ── HERO ── */}
+      <section className="relative h-screen min-h-[600px] sm:min-h-[700px] flex items-center justify-center overflow-hidden pt-16">
+
+        {/* Background */}
         <div className="absolute inset-0 z-0">
           <Image
-            src={getImagePath("/Image-test3Bis.png")}
+            src={getImagePath('/Image-test3Bis.png')}
             alt="Background"
             fill
             className="object-cover object-right"
             priority
             quality={90}
           />
-          {/* Gradient Overlay - Balanced for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/25 to-black/10" />
-          {/* Additional subtle gradient overlay for depth */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-transparent to-black/15" />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/8 via-transparent to-transparent" />
-          {/* Gradient fade to white at bottom - apparaît progressivement au scroll */}
-          <div 
-            className="absolute bottom-0 left-0 right-0 h-[400px] pointer-events-none transition-opacity duration-300"
-            style={{
-              background: `linear-gradient(to bottom, transparent 0%, rgba(255,255,255,${scrollProgress * 0.2}) ${30 - scrollProgress * 10}%, rgba(255,255,255,${scrollProgress * 0.5}) ${50 - scrollProgress * 10}%, rgba(255,255,255,${scrollProgress * 0.8}) ${70 - scrollProgress * 10}%, rgba(255,255,255,${scrollProgress}) 100%)`,
-              opacity: scrollProgress
-            }}
-          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/30 to-black/15" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/20" />
         </div>
 
-        {/* Content Container - Centered Vertical Layout */}
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-8 sm:py-12">
+        {/* Centered frosted card */}
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto">
-            <div className="relative z-10 bg-black/40 backdrop-blur-md rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 border border-white/20 shadow-2xl">
-            {/* Badge - Centered */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="flex justify-center mb-4 sm:mb-8"
-            >
-              <div className="inline-flex items-center space-x-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-white/20 backdrop-blur-md rounded-full border border-white/40 shadow-lg">
-                <span className="text-[10px] sm:text-xs font-semibold text-white drop-shadow-lg tracking-wider uppercase">
-                  Développeur Web Expert
-                </span>
-              </div>
-            </motion.div>
+            <div className="bg-black/40 backdrop-blur-md rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 border border-white/20 shadow-2xl">
 
-            {/* Main Heading - Centered */}
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.15] sm:leading-[1.1] tracking-tight mb-4 sm:mb-6 text-center"
-            >
-              <span className="text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] [text-shadow:_2px_2px_8px_rgba(0,0,0,0.9)]">Créez votre présence en ligne</span>{' '}
-              <span className="bg-gradient-to-r from-blue-300 via-purple-300 to-blue-300 bg-clip-text text-transparent drop-shadow-2xl block mt-1 sm:mt-2">
-                professionnelle
-              </span>
-            </motion.h1>
+              {/* Label */}
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="flex justify-center mb-6 sm:mb-8"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-6 h-px bg-[#C9A96E]" />
+                  <span className="text-[#C9A96E] text-[10px] sm:text-xs font-semibold tracking-[0.2em] uppercase">
+                    Développeur Web Freelance · Bruxelles
+                  </span>
+                  <div className="w-6 h-px bg-[#C9A96E]" />
+                </div>
+              </motion.div>
 
-            {/* Subtitle - Centered */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-base sm:text-lg md:text-xl lg:text-2xl text-white leading-relaxed mb-6 sm:mb-8 md:mb-12 text-center max-w-2xl mx-auto drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] [text-shadow:_2px_2px_8px_rgba(0,0,0,0.9)] font-semibold px-2"
-            >
-              Solutions sur-mesure pour votre entreprise.
-            </motion.p>
+              {/* H1 */}
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.15 }}
+                className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white leading-[1.1] tracking-tight mb-5 text-center"
+              >
+                Créez votre présence en ligne{' '}
+                <span className="italic text-[#C9A96E] block mt-1">professionnelle.</span>
+              </motion.h1>
 
-            {/* CTA Buttons - Centered */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 sm:mb-12 md:mb-16 px-2"
-            >
-              <Link href="/portfolio" className="w-full sm:w-auto">
-                <motion.button
-                  whileHover={{ scale: 1.05, boxShadow: "0 15px 50px rgba(0,0,0,0.5)" }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full sm:w-auto px-6 sm:px-8 md:px-10 py-3.5 sm:py-4 md:py-5 bg-gradient-to-r from-primary to-accent text-white rounded-lg sm:rounded-xl font-bold text-base sm:text-lg shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center space-x-2 backdrop-blur-sm"
-                >
-                  <span>Voir mes réalisations</span>
-                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-                </motion.button>
-              </Link>
-              <Link href="/contact" className="w-full sm:w-auto">
-                <motion.button
-                  whileHover={{ scale: 1.05, boxShadow: "0 15px 50px rgba(255,255,255,0.4)" }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full sm:w-auto px-6 sm:px-8 md:px-10 py-3.5 sm:py-4 md:py-5 bg-white text-primary rounded-lg sm:rounded-xl font-bold text-base sm:text-lg shadow-2xl hover:shadow-3xl transition-all duration-300 flex items-center justify-center space-x-2 border-2 border-white/50 relative overflow-hidden group"
-                >
-                  <span className="relative z-10">Demander un devis gratuit</span>
-                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 relative z-10" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </motion.button>
-              </Link>
-            </motion.div>
+              {/* Subtitle */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.3 }}
+                className="text-white/65 text-base sm:text-lg text-center max-w-xl mx-auto mb-8 sm:mb-10 leading-relaxed"
+              >
+                Je conçois des sites modernes, rapides et orientés conversion pour les professionnels et les PME.
+              </motion.p>
 
-            {/* Stats Row - Horizontal */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="grid grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8 md:mb-12 max-w-2xl mx-auto"
-            >
-              <div className="bg-white/10 backdrop-blur-md rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 border border-white/20 shadow-xl text-center">
-                <p className="text-white font-bold text-sm sm:text-base md:text-lg mb-1">Réponse rapide</p>
-                <p className="text-white/90 text-xs sm:text-sm">Sous 24h</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-md rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 border border-white/20 shadow-xl text-center">
-                <p className="text-white font-bold text-sm sm:text-base md:text-lg mb-1">Technologies modernes</p>
-                <p className="text-white/90 text-xs sm:text-sm">Next.js • React • Tailwind</p>
-              </div>
-            </motion.div>
+              {/* CTAs */}
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.45 }}
+                className="flex flex-col sm:flex-row gap-3 justify-center mb-8 sm:mb-10"
+              >
+                <Link href="/portfolio">
+                  <button className="w-full sm:w-auto px-7 py-3.5 bg-primary hover:bg-primary-dark text-white font-semibold rounded-lg text-sm transition-colors flex items-center justify-center gap-2 shadow-lg">
+                    Voir mes réalisations <ArrowRight className="w-4 h-4" />
+                  </button>
+                </Link>
+                <Link href="/contact">
+                  <button className="w-full sm:w-auto px-7 py-3.5 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-lg text-sm border border-white/25 transition-colors flex items-center justify-center gap-2">
+                    Demander un devis gratuit <ArrowRight className="w-4 h-4" />
+                  </button>
+                </Link>
+              </motion.div>
 
-            {/* Trust Indicators - Centered */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1 }}
-              className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6"
-            >
-              <div className="flex items-center space-x-1.5 sm:space-x-2">
-                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-white drop-shadow-lg" />
-                <span className="text-xs sm:text-sm text-white drop-shadow-lg font-medium">Sans engagement</span>
-              </div>
-              <div className="flex items-center space-x-1.5 sm:space-x-2">
-                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-white drop-shadow-lg" />
-                <span className="text-xs sm:text-sm text-white drop-shadow-lg font-medium">Réponse sous 24h</span>
-              </div>
-              <div className="flex items-center space-x-1.5 sm:space-x-2">
-                <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-white drop-shadow-lg" />
-                <span className="text-xs sm:text-sm text-white drop-shadow-lg font-medium">Devis gratuit</span>
-              </div>
-            </motion.div>
+              {/* Trust */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="flex flex-wrap items-center justify-center gap-5 pt-6 border-t border-white/10"
+              >
+                {['Sans engagement', 'Réponse sous 24h', 'Devis gratuit'].map((item) => (
+                  <div key={item} className="flex items-center gap-1.5">
+                    <CheckCircle className="w-4 h-4 text-white/50" />
+                    <span className="text-white/50 text-xs">{item}</span>
+                  </div>
+                ))}
+              </motion.div>
+
             </div>
           </div>
         </div>
-
-
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1 }}
-          className="absolute bottom-8 right-4 sm:right-8 lg:right-12 z-10"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center backdrop-blur-sm bg-white/5"
-          >
-            <motion.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="w-1 h-3 bg-white/50 rounded-full mt-2"
-            />
-          </motion.div>
-        </motion.div>
       </section>
 
-      {/* Services Section - Modern & Premium */}
-      <section className="relative py-16 sm:py-24 md:py-32 bg-gradient-to-b from-white via-gray-50 to-white dark:from-dark dark:via-dark-light dark:to-dark overflow-hidden">
-        {/* Decorative Background Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
-        </div>
+      {/* ── SERVICES ── */}
+      <section className="py-24 md:py-32 bg-white dark:bg-dark">
+        <div className="container mx-auto px-6 lg:px-8">
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          {/* Header */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-24 max-w-4xl mx-auto"
+            transition={{ duration: 0.5 }}
+            className="mb-16"
           >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="inline-block mb-6"
-            >
-              <span className="px-4 py-2 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full text-sm font-semibold text-primary dark:text-accent border border-primary/20 dark:border-accent/20">
-                EXPERTISE PROFESSIONNELLE
-              </span>
-            </motion.div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 md:mb-8 text-gray-900 dark:text-white leading-tight px-4">
-              Services{' '}
-              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-                Premium
-              </span>
+            <div className="flex items-center gap-3 mb-5">
+              <div className="w-6 h-px bg-[#C9A96E]" />
+              <span className="text-[#C9A96E] text-xs font-semibold tracking-[0.2em] uppercase">Expertise</span>
+            </div>
+            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-light text-gray-900 dark:text-white leading-tight">
+              Ce que je fais <span className="italic text-[#C9A96E]">pour vous.</span>
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto px-4">
-              Des solutions sur-mesure conçues pour transformer votre présence digitale. 
-              Chaque service est optimisé pour la performance, l'élégance et l'efficacité.
-            </p>
           </motion.div>
 
-          {/* Services Grid - Modern Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
-            {services.map((service, index) => {
-              const Icon = service.icon
-              return (
-                <motion.div
-                  key={service.title}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.15 }}
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  className="group relative cursor-pointer"
-                  onClick={() => openModal(index)}
-                >
-                  {/* Card */}
-                  <div className="relative h-full p-6 sm:p-8 md:p-10 bg-white dark:bg-dark-light rounded-xl sm:rounded-2xl border border-gray-200 dark:border-gray-800 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden">
-                    {/* Gradient Background on Hover */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
-                    
-                    {/* Decorative Corner Element */}
-                    <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 rounded-bl-full transition-opacity duration-500`} />
+          {/* Liste horizontale */}
+          <div className="mt-2">
+            {services.map((service, index) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: index * 0.08 }}
+                onClick={() => setSelectedService(index)}
+                className="group cursor-pointer"
+              >
+                {/* Séparateur doré */}
+                <div className="h-px bg-[#C9A96E]/30 group-hover:bg-[#C9A96E] transition-colors duration-300" />
 
-                    {/* Content */}
-                    <div className="relative z-10">
-                      {/* Icon Container */}
-                      <motion.div
-                        whileHover={{ rotate: [0, -10, 10, -10, 0] }}
-                        transition={{ duration: 0.5 }}
-                        className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${service.color} shadow-lg mb-6 group-hover:shadow-xl transition-all duration-300`}
-                      >
-                        <Icon className="w-8 h-8 text-white" />
-                      </motion.div>
+                {/* Contenu */}
+                <div className="py-10 grid grid-cols-12 gap-6 items-center">
 
-                      {/* Title */}
-                      <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 text-gray-900 dark:text-white group-hover:text-primary dark:group-hover:text-accent transition-colors duration-300">
-                        {service.title}
-                      </h3>
-
-                      {/* Description */}
-                      <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-4 sm:mb-6">
-                        {service.description}
-                      </p>
-
-                      {/* CTA Arrow */}
-                      <div className="flex items-center text-primary dark:text-accent font-semibold opacity-0 group-hover:opacity-100 transform translate-x-0 group-hover:translate-x-2 transition-all duration-300">
-                        <span className="text-sm mr-2">En savoir plus</span>
-                        <ArrowRight className="w-5 h-5" />
-                      </div>
-                    </div>
-
-                    {/* Shine Effect */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                    </div>
+                  {/* Numéro */}
+                  <div className="col-span-2 sm:col-span-1 flex items-center">
+                    <span className="font-display text-5xl sm:text-6xl font-light text-[#C9A96E]/20 group-hover:text-[#C9A96E] transition-colors duration-300 leading-none select-none">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
                   </div>
-                </motion.div>
-              )
-            })}
+
+                  {/* Titre */}
+                  <div className="col-span-10 sm:col-span-3">
+                    <h3 className="font-display text-2xl sm:text-3xl font-light text-gray-900 dark:text-white group-hover:text-primary transition-colors duration-200 leading-tight">
+                      {service.title}
+                    </h3>
+                  </div>
+
+                  {/* Description */}
+                  <div className="col-span-12 sm:col-span-5">
+                    <p className="text-gray-400 dark:text-white/45 text-sm leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
+
+                  {/* Prix */}
+                  <div className="col-span-10 sm:col-span-2">
+                    <p className="text-gray-900 dark:text-white font-semibold text-sm">
+                      {service.price}
+                    </p>
+                  </div>
+
+                  {/* Flèche */}
+                  <div className="col-span-2 sm:col-span-1 flex justify-end">
+                    <ArrowRight className="w-5 h-5 text-gray-200 dark:text-white/20 group-hover:text-[#C9A96E] group-hover:translate-x-1 transition-all duration-200" />
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+
+            {/* Séparateur final */}
+            <div className="h-px bg-[#C9A96E]/30" />
           </div>
 
-          {/* Service Modals */}
           {selectedService !== null && (
             <ServiceModal
               isOpen={selectedService !== null}
-              onClose={closeModal}
+              onClose={() => setSelectedService(null)}
               title={services[selectedService].title}
               icon={services[selectedService].icon}
               color={services[selectedService].color}
@@ -442,280 +332,89 @@ export default function Home() {
             />
           )}
 
-          {/* Bottom CTA */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="text-center mt-20"
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="mt-12"
           >
             <Link href="/services">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-10 py-5 bg-gradient-to-r from-primary to-accent text-white rounded-xl font-semibold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center justify-center space-x-3 mx-auto group"
-              >
-                <span>Découvrir tous les services</span>
-                <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
-              </motion.button>
+              <button className="px-8 py-3.5 bg-primary hover:bg-primary-dark text-white font-semibold rounded-lg text-sm transition-colors flex items-center gap-2">
+                Voir tous les tarifs <ArrowRight className="w-4 h-4" />
+              </button>
             </Link>
           </motion.div>
         </div>
       </section>
 
-      {/* Process Steps */}
-      <section className="py-16 sm:py-24 md:py-32 bg-gradient-to-b from-gray-50 to-white dark:from-dark dark:to-dark-light">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ── PROCESS ── */}
+      <section className="py-24 md:py-32 bg-primary dark:bg-primary">
+        <div className="container mx-auto px-6 lg:px-8">
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-            className="text-center mb-16 max-w-3xl mx-auto"
+            transition={{ duration: 0.5 }}
+            className="text-center mb-16 max-w-2xl mx-auto"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white px-4">
-              Le Chemin de la{' '}
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                Construction de Votre Site
-              </span>
+            <div className="flex items-center justify-center gap-3 mb-5">
+              <div className="w-6 h-px bg-[#C9A96E]" />
+              <span className="text-[#C9A96E] text-xs font-semibold tracking-[0.2em] uppercase">Méthode</span>
+              <div className="w-6 h-px bg-[#C9A96E]" />
+            </div>
+            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-light text-white leading-tight">
+              Un processus <span className="italic text-[#C9A96E]">éprouvé.</span>
             </h2>
-            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed px-4">
-              Un processus structuré et professionnel pour créer un site web qui répond parfaitement à vos besoins.
-            </p>
           </motion.div>
 
-          <div className="max-w-7xl mx-auto">
-            {/* Desktop: Horizontal Path */}
-            <div className="hidden lg:flex items-center justify-between gap-4">
-              {/* Step 1 */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            {[
+              { num: '01', title: 'Structure & Design', desc: 'Définition de l\'architecture, de la navigation et de l\'identité visuelle.' },
+              { num: '02', title: 'Création du contenu', desc: 'Intégration des textes, images et médias adaptés à votre image de marque.' },
+              { num: '03', title: 'Optimisation SEO', desc: 'Mise en place des bonnes pratiques pour améliorer votre visibilité sur Google.' },
+              { num: '04', title: 'Mise en ligne', desc: 'Hébergement, déploiement et suivi continu de votre présence en ligne.' },
+            ].map((step, i) => (
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                key={step.num}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="flex-1 relative bg-white dark:bg-dark border-2 border-gray-200 dark:border-gray-800 rounded-xl p-6 hover:shadow-xl transition-all duration-300"
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="border-t border-white/20 pt-6"
               >
-                <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-primary to-accent text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl shadow-lg z-10">
-                  1
-                </div>
-                <div className="pt-6">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
-                    Structure et design du site web
-                  </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Création de l'architecture et du design visuel de votre site web. Définition de la structure, de la navigation et de l'identité visuelle pour une expérience utilisateur optimale.
-                  </p>
-                </div>
+                <p className="text-[#C9A96E] text-sm font-semibold mb-4">{step.num}</p>
+                <h3 className="font-display text-xl font-light text-white mb-3">{step.title}</h3>
+                <p className="text-white/55 text-sm leading-relaxed">{step.desc}</p>
               </motion.div>
-
-              {/* Arrow 1 */}
-              <div className="flex-shrink-0 text-primary dark:text-accent">
-                <ChevronRight className="w-8 h-8" />
-              </div>
-
-              {/* Step 2 */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="flex-1 relative bg-white dark:bg-dark border-2 border-gray-200 dark:border-gray-800 rounded-xl p-6 hover:shadow-xl transition-all duration-300"
-              >
-                <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-primary to-accent text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl shadow-lg z-10">
-                  2
-                </div>
-                <div className="pt-6">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
-                    Création du contenu de votre site internet
-                  </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Rédaction et intégration de tous les contenus textuels, images et médias de votre site. Adaptation du contenu à votre identité de marque et à vos objectifs de communication.
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* Arrow 2 */}
-              <div className="flex-shrink-0 text-primary dark:text-accent">
-                <ChevronRight className="w-8 h-8" />
-              </div>
-
-              {/* Step 3 */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="flex-1 relative bg-white dark:bg-dark border-2 border-gray-200 dark:border-gray-800 rounded-xl p-6 hover:shadow-xl transition-all duration-300"
-              >
-                <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-primary to-accent text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl shadow-lg z-10">
-                  3
-                </div>
-                <div className="pt-6">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
-                    Optimisation du référencement naturel
-                  </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Optimisation technique et contenu pour améliorer votre visibilité sur les moteurs de recherche. Mise en place des bonnes pratiques SEO pour augmenter votre trafic naturel.
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* Arrow 3 */}
-              <div className="flex-shrink-0 text-primary dark:text-accent">
-                <ChevronRight className="w-8 h-8" />
-              </div>
-
-              {/* Step 4 */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="flex-1 relative bg-white dark:bg-dark border-2 border-gray-200 dark:border-gray-800 rounded-xl p-6 hover:shadow-xl transition-all duration-300"
-              >
-                <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-primary to-accent text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl shadow-lg z-10">
-                  4
-                </div>
-                <div className="pt-6">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
-                    Mise en ligne et suivi après création du site internet
-                  </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Hébergement, déploiement et mise en ligne de votre site web. Accompagnement et suivi continu pour garantir le bon fonctionnement et l'évolution de votre présence en ligne.
-                  </p>
-                </div>
-              </motion.div>
-            </div>
-
-            {/* Mobile: Vertical Path */}
-            <div className="lg:hidden space-y-8">
-              {/* Step 1 */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="relative bg-white dark:bg-dark border-2 border-gray-200 dark:border-gray-800 rounded-xl p-6"
-              >
-                <div className="absolute -left-5 top-6 bg-gradient-to-r from-primary to-accent text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl shadow-lg z-10">
-                  1
-                </div>
-                <div className="ml-8">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
-                    Structure et design du site web
-                  </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Création de l'architecture et du design visuel de votre site web. Définition de la structure, de la navigation et de l'identité visuelle pour une expérience utilisateur optimale.
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* Arrow 1 */}
-              <div className="flex justify-center text-primary dark:text-accent">
-                <ChevronDown className="w-8 h-8" />
-              </div>
-
-              {/* Step 2 */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="relative bg-white dark:bg-dark border-2 border-gray-200 dark:border-gray-800 rounded-xl p-6"
-              >
-                <div className="absolute -left-5 top-6 bg-gradient-to-r from-primary to-accent text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl shadow-lg z-10">
-                  2
-                </div>
-                <div className="ml-8">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
-                    Création du contenu de votre site internet
-                  </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Rédaction et intégration de tous les contenus textuels, images et médias de votre site. Adaptation du contenu à votre identité de marque et à vos objectifs de communication.
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* Arrow 2 */}
-              <div className="flex justify-center text-primary dark:text-accent">
-                <ChevronDown className="w-8 h-8" />
-              </div>
-
-              {/* Step 3 */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="relative bg-white dark:bg-dark border-2 border-gray-200 dark:border-gray-800 rounded-xl p-6"
-              >
-                <div className="absolute -left-5 top-6 bg-gradient-to-r from-primary to-accent text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl shadow-lg z-10">
-                  3
-                </div>
-                <div className="ml-8">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
-                    Optimisation du référencement naturel
-                  </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Optimisation technique et contenu pour améliorer votre visibilité sur les moteurs de recherche. Mise en place des bonnes pratiques SEO pour augmenter votre trafic naturel.
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* Arrow 3 */}
-              <div className="flex justify-center text-primary dark:text-accent">
-                <ChevronDown className="w-8 h-8" />
-              </div>
-
-              {/* Step 4 */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="relative bg-white dark:bg-dark border-2 border-gray-200 dark:border-gray-800 rounded-xl p-6"
-              >
-                <div className="absolute -left-5 top-6 bg-gradient-to-r from-primary to-accent text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl shadow-lg z-10">
-                  4
-                </div>
-                <div className="ml-8">
-                  <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
-                    Mise en ligne et suivi après création du site internet
-                  </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
-                    Hébergement, déploiement et mise en ligne de votre site web. Accompagnement et suivi continu pour garantir le bon fonctionnement et l'évolution de votre présence en ligne.
-                  </p>
-                </div>
-              </motion.div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Portfolio Preview */}
-      <section className="py-16 sm:py-24 md:py-32 bg-white dark:bg-dark-light">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ── PORTFOLIO ── */}
+      <section className="py-24 md:py-32 bg-white dark:bg-dark">
+        <div className="container mx-auto px-6 lg:px-8">
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-            className="text-center mb-20 max-w-3xl mx-auto"
+            transition={{ duration: 0.5 }}
+            className="text-center mb-16 max-w-2xl mx-auto"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white px-4">
-              Mes{' '}
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                Réalisations
-              </span>
+            <div className="flex items-center justify-center gap-3 mb-5">
+              <div className="w-6 h-px bg-[#C9A96E]" />
+              <span className="text-[#C9A96E] text-xs font-semibold tracking-[0.2em] uppercase">Réalisations</span>
+              <div className="w-6 h-px bg-[#C9A96E]" />
+            </div>
+            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-light text-gray-900 dark:text-white leading-tight">
+              Des projets <span className="italic text-[#C9A96E]">concrets.</span>
             </h2>
-            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed px-4">
-              Découvrez une sélection de projets récents. Chaque site est unique, 
-              conçu pour répondre aux besoins spécifiques de mes clients et optimisé pour la performance.
-            </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {featuredPortfolio.map((project, index) => (
               <PortfolioCard
                 key={project.title}
@@ -730,60 +429,59 @@ export default function Home() {
 
           <div className="text-center">
             <Link href="/portfolio">
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="px-8 py-4 bg-gradient-to-r from-primary to-accent text-white rounded-lg font-semibold text-base shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center space-x-2 mx-auto"
-              >
-                <span>Voir tout le portfolio</span>
-                <ArrowRight className="w-5 h-5" />
-              </motion.button>
+              <button className="px-8 py-3.5 border border-primary text-primary hover:bg-primary hover:text-white font-semibold rounded-lg text-sm transition-all duration-200 flex items-center gap-2 mx-auto">
+                Voir tout le portfolio <ArrowRight className="w-4 h-4" />
+              </button>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="relative py-16 sm:py-24 md:py-32 bg-gradient-to-r from-primary via-accent to-primary">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ── CTA ── */}
+      <section className="py-24 md:py-32 bg-gray-950 dark:bg-dark-light">
+        <div className="container mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-            className="text-center max-w-3xl mx-auto"
+            transition={{ duration: 0.5 }}
+            className="max-w-3xl mx-auto text-center"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 text-white px-4">
-              Prêt à transformer votre idée en réalité digitale ?
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <div className="w-6 h-px bg-[#C9A96E]" />
+              <span className="text-[#C9A96E] text-xs font-semibold tracking-[0.2em] uppercase">Contact</span>
+              <div className="w-6 h-px bg-[#C9A96E]" />
+            </div>
+            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-light text-white mb-6 leading-tight">
+              Votre projet mérite <span className="italic text-[#C9A96E]">mieux.</span>
             </h2>
-            <p className="text-base sm:text-lg text-white/90 mb-6 sm:mb-8 md:mb-10 leading-relaxed px-4">
-              Discutons de votre projet ensemble. Je vous propose un devis gratuit et personnalisé 
-              pour créer un site web qui correspond parfaitement à vos besoins et à votre image de marque.
+            <p className="text-white/50 text-lg mb-10 leading-relaxed">
+              Devis gratuit, réponse sous 24h, sans engagement. Discutons de ce que je peux faire pour vous.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center mb-10">
               <Link href="/contact">
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="px-10 py-5 bg-white text-primary rounded-lg font-semibold text-base shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center space-x-2"
-                >
-                  <span>Demander un devis gratuit</span>
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
+                <button className="px-8 py-3.5 bg-primary hover:bg-primary-dark text-white font-semibold rounded-lg text-sm transition-colors flex items-center gap-2">
+                  Demander un devis gratuit <ArrowRight className="w-4 h-4" />
+                </button>
               </Link>
               <Link href="/portfolio">
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="px-10 py-5 bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 rounded-lg font-semibold text-base hover:bg-white/20 transition-all duration-200"
-                >
+                <button className="px-8 py-3.5 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-lg text-sm border border-white/10 transition-colors">
                   Voir mes réalisations
-                </motion.button>
+                </button>
               </Link>
+            </div>
+            <div className="flex flex-wrap items-center justify-center gap-8 pt-8 border-t border-white/10">
+              {['Sans engagement', 'Réponse sous 24h', 'Devis gratuit'].map((item) => (
+                <div key={item} className="flex items-center gap-2">
+                  <CheckCircle className="w-3.5 h-3.5 text-[#C9A96E]" />
+                  <span className="text-white/40 text-sm">{item}</span>
+                </div>
+              ))}
             </div>
           </motion.div>
         </div>
       </section>
+
     </div>
   )
 }
