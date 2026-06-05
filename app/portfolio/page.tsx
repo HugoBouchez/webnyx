@@ -26,7 +26,7 @@ const portfolioProjects = [
     title: 'Site Web Salon de Coiffure Élégance',
     slug: 'salon-coiffure-elegance',
     description: 'Site web élégant pour salon de coiffure avec présentation des prestations, tarifs, produits et prise de rendez-vous. Design premium et professionnel.',
-    image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&h=600&fit=crop',
+    image: '/image/Image coiffeur.png',
   },
   {
     title: 'Landing Page Marketing',

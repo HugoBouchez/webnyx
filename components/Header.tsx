@@ -31,7 +31,7 @@ export default function Header() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled || pathname !== '/'
           ? 'bg-[#1E3A5F] shadow-[0_4px_32px_rgba(0,0,0,0.35)]'
-          : 'bg-gradient-to-b from-black/55 to-transparent'
+          : 'bg-gradient-to-b from-black/70 to-transparent'
       }`}
     >
       {/* Filet or en bas — visible seulement au scroll */}
@@ -42,10 +42,10 @@ export default function Header() {
 
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 flex-shrink-0">
-            <div className="w-9 h-9 border border-[#C9A96E]/55 flex items-center justify-center">
-              <span className="font-display text-[#C9A96E] font-light text-xl italic leading-none">W</span>
+            <div className="w-11 h-11 border border-[#C9A96E]/55 flex items-center justify-center">
+              <span className="font-display text-[#C9A96E] font-light text-2xl italic leading-none">W</span>
             </div>
-            <span className="font-display text-white font-light text-[1.35rem] tracking-wide leading-none">
+            <span className="font-display text-white font-normal text-[1.75rem] tracking-wide leading-none" style={{ textShadow: '0 0 12px rgba(0,0,0,1), 0 2px 20px rgba(0,0,0,1), 0 4px 30px rgba(0,0,0,0.8)' }}>
               Webnyx
             </span>
           </Link>
@@ -58,7 +58,8 @@ export default function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`relative px-5 py-2 text-[15px] font-medium transition-colors duration-150 ${
+                  style={{ textShadow: '0 0 12px rgba(0,0,0,1), 0 2px 20px rgba(0,0,0,1), 0 4px 30px rgba(0,0,0,0.8)' }}
+                  className={`relative px-5 py-2 text-[17px] font-semibold transition-colors duration-150 ${
                     isActive
                       ? 'text-[#C9A96E]'
                       : 'text-white hover:text-white/80'

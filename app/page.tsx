@@ -32,7 +32,7 @@ const featuredPortfolio = [
     title: 'Site Web Salon de Coiffure Élégance',
     slug: 'salon-coiffure-elegance',
     description: 'Site web élégant pour salon de coiffure avec présentation des prestations, tarifs, produits et prise de rendez-vous. Design premium et professionnel.',
-    image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800&h=600&fit=crop',
+    image: '/image/Image coiffeur.png',
   },
   {
     title: 'Landing Page Marketing',
@@ -270,43 +270,43 @@ export default function Home() {
                 onClick={() => setSelectedService(index)}
                 className="group cursor-pointer"
               >
-                {/* Séparateur doré */}
+                {/* Séparateur */}
                 <div className="h-px bg-[#C9A96E]/30 group-hover:bg-[#C9A96E] transition-colors duration-300" />
 
                 {/* Contenu */}
-                <div className="py-10 grid grid-cols-12 gap-6 items-center">
+                <div className="py-8 px-4 -mx-4 grid grid-cols-12 gap-6 items-center group-hover:bg-gray-50 dark:group-hover:bg-white/5 transition-colors duration-300 rounded-lg">
 
                   {/* Numéro */}
-                  <div className="col-span-2 sm:col-span-1 flex items-center">
-                    <span className="font-display text-5xl sm:text-6xl font-light text-[#C9A96E]/20 group-hover:text-[#C9A96E] transition-colors duration-300 leading-none select-none">
+                  <div className="col-span-1 flex items-center">
+                    <span className="font-display text-5xl sm:text-6xl font-light text-[#C9A96E]/60 group-hover:text-[#C9A96E] transition-colors duration-300 leading-none select-none">
                       {String(index + 1).padStart(2, '0')}
                     </span>
                   </div>
 
                   {/* Titre */}
-                  <div className="col-span-10 sm:col-span-3">
-                    <h3 className="font-display text-2xl sm:text-3xl font-light text-gray-900 dark:text-white group-hover:text-primary transition-colors duration-200 leading-tight">
+                  <div className="col-span-11 sm:col-span-3">
+                    <h3 className="font-display text-2xl sm:text-3xl font-normal text-gray-900 dark:text-white group-hover:text-primary transition-colors duration-200 leading-tight">
                       {service.title}
                     </h3>
                   </div>
 
                   {/* Description */}
-                  <div className="col-span-12 sm:col-span-5">
-                    <p className="text-gray-400 dark:text-white/45 text-sm leading-relaxed">
+                  <div className="hidden sm:block col-span-5">
+                    <p className="text-gray-500 dark:text-white/60 text-[15px] leading-relaxed">
                       {service.description}
                     </p>
                   </div>
 
                   {/* Prix */}
-                  <div className="col-span-10 sm:col-span-2">
-                    <p className="text-gray-900 dark:text-white font-semibold text-sm">
+                  <div className="hidden sm:block col-span-2">
+                    <p className="text-gray-900 dark:text-white font-semibold text-lg">
                       {service.price}
                     </p>
                   </div>
 
                   {/* Flèche */}
-                  <div className="col-span-2 sm:col-span-1 flex justify-end">
-                    <ArrowRight className="w-5 h-5 text-gray-200 dark:text-white/20 group-hover:text-[#C9A96E] group-hover:translate-x-1 transition-all duration-200" />
+                  <div className="hidden sm:flex col-span-1 justify-end">
+                    <ArrowRight className="w-5 h-5 text-gray-300 dark:text-white/30 group-hover:text-[#C9A96E] group-hover:translate-x-1 transition-all duration-200" />
                   </div>
                 </div>
               </motion.div>
