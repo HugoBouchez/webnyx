@@ -21,51 +21,54 @@ export default function Header() {
   const pathname = usePathname()
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 10)
+    const handleScroll = () => setIsScrolled(window.scrollY > 20)
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white dark:bg-dark border-b border-gray-100 dark:border-gray-800/60 shadow-sm'
-          : 'bg-white dark:bg-dark'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled || pathname !== '/'
+          ? 'bg-[#1E3A5F] shadow-[0_4px_32px_rgba(0,0,0,0.35)]'
+          : 'bg-gradient-to-b from-black/55 to-transparent'
       }`}
     >
+      {/* Filet or en bas — visible seulement au scroll */}
+      <div className={`absolute bottom-0 left-0 right-0 h-px bg-[#C9A96E]/35 transition-opacity duration-500 ${isScrolled || pathname !== '/' ? 'opacity-100' : 'opacity-0'}`} />
+
       <nav className="container mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-[64px]">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group flex-shrink-0">
-            <div className="w-8 h-8 bg-primary rounded-md flex items-center justify-center">
-              <span className="text-white font-bold text-sm tracking-tight">W</span>
+          <Link href="/" className="flex items-center gap-3 flex-shrink-0">
+            <div className="w-8 h-8 border border-[#C9A96E]/55 flex items-center justify-center">
+              <span className="font-display text-[#C9A96E] font-light text-lg italic leading-none">W</span>
             </div>
-            <span className="font-bold text-gray-900 dark:text-white text-[15px] tracking-tight">
+            <span className="font-display text-white font-light text-[1.2rem] tracking-wide leading-none">
               Webnyx
             </span>
           </Link>
 
           {/* Nav Desktop */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden md:flex items-center">
             {navItems.map((item) => {
               const isActive = pathname === item.href
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`relative px-4 py-2 text-sm font-medium rounded-md transition-colors duration-150 ${
+                  className={`relative px-5 py-2 text-sm transition-colors duration-150 ${
                     isActive
-                      ? 'text-gray-900 dark:text-white'
-                      : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                      ? 'text-[#C9A96E]'
+                      : 'text-white/90 hover:text-white'
                   }`}
                 >
                   {item.name}
                   {isActive && (
                     <motion.div
                       layoutId="nav-indicator"
-                      className="absolute bottom-0.5 left-4 right-4 h-0.5 bg-primary rounded-full"
+                      className="absolute bottom-0 left-5 right-5 h-px bg-[#C9A96E]"
                     />
                   )}
                 </Link>
@@ -73,17 +76,17 @@ export default function Header() {
             })}
           </div>
 
-          {/* Actions */}
-          <div className="hidden md:flex items-center gap-2 flex-shrink-0">
+          {/* Actions desktop */}
+          <div className="hidden md:flex items-center gap-3 flex-shrink-0">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-md text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+              className="p-2 text-white/70 hover:text-white transition-colors"
               aria-label="Changer le thème"
             >
               {theme === 'light' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
             </button>
             <Link href="/contact">
-              <button className="px-4 py-2 bg-primary hover:bg-primary-dark text-white text-sm font-semibold rounded-md transition-colors duration-150">
+              <button className="px-5 py-[7px] border border-[#C9A96E]/55 text-[#C9A96E] text-sm font-semibold hover:bg-[#C9A96E] hover:text-[#1E3A5F] transition-all duration-200">
                 Devis gratuit
               </button>
             </Link>
@@ -93,14 +96,14 @@ export default function Header() {
           <div className="md:hidden flex items-center gap-1">
             <button
               onClick={toggleTheme}
-              className="p-2 text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md transition-colors"
+              className="p-2 text-white/45 hover:text-white transition-colors"
               aria-label="Thème"
             >
-              {theme === 'light' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
+              {theme === 'light' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
             </button>
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md transition-colors"
+              className="p-2 text-white/70 hover:text-white transition-colors"
               aria-label="Menu"
             >
               {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -109,17 +112,17 @@ export default function Header() {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Menu mobile */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -4 }}
+            initial={{ opacity: 0, y: -6 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -4 }}
-            transition={{ duration: 0.15 }}
-            className="md:hidden border-t border-gray-100 dark:border-gray-800 bg-white dark:bg-dark"
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.18 }}
+            className="md:hidden bg-[#1E3A5F] border-t border-[#C9A96E]/20"
           >
-            <div className="container mx-auto px-6 py-3 flex flex-col gap-0.5">
+            <div className="container mx-auto px-6 py-4 flex flex-col">
               {navItems.map((item) => {
                 const isActive = pathname === item.href
                 return (
@@ -127,10 +130,10 @@ export default function Header() {
                     key={item.href}
                     href={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`py-2.5 px-3 rounded-md text-sm font-medium transition-colors ${
+                    className={`py-3 text-sm font-medium border-b border-white/8 transition-colors ${
                       isActive
-                        ? 'text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-800'
-                        : 'text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800'
+                        ? 'text-[#C9A96E]'
+                        : 'text-white/60 hover:text-white'
                     }`}
                   >
                     {item.name}
@@ -140,7 +143,7 @@ export default function Header() {
               <Link
                 href="/contact"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="mt-2 py-2.5 px-3 bg-primary hover:bg-primary-dark text-white text-sm font-semibold rounded-md text-center transition-colors"
+                className="mt-4 py-2.5 border border-[#C9A96E]/55 text-[#C9A96E] text-sm font-semibold text-center hover:bg-[#C9A96E] hover:text-[#1E3A5F] transition-all duration-200"
               >
                 Devis gratuit
               </Link>

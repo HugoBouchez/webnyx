@@ -169,8 +169,8 @@ export default function Home() {
 
               {/* Label */}
               <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ y: 16 }}
+                animate={{ y: 0 }}
                 transition={{ duration: 0.5 }}
                 className="flex justify-center mb-6 sm:mb-8"
               >
@@ -185,9 +185,9 @@ export default function Home() {
 
               {/* H1 */}
               <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.15 }}
+                initial={{ y: 20 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.7, delay: 0.1 }}
                 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white leading-[1.1] tracking-tight mb-5 text-center"
               >
                 Créez votre présence en ligne{' '}
@@ -196,9 +196,9 @@ export default function Home() {
 
               {/* Subtitle */}
               <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.3 }}
+                initial={{ y: 12 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-white/65 text-base sm:text-lg text-center max-w-xl mx-auto mb-8 sm:mb-10 leading-relaxed"
               >
                 Je conçois des sites modernes, rapides et orientés conversion pour les professionnels et les PME.
@@ -206,9 +206,9 @@ export default function Home() {
 
               {/* CTAs */}
               <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.45 }}
+                initial={{ y: 10 }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
                 className="flex flex-col sm:flex-row gap-3 justify-center mb-8 sm:mb-10"
               >
                 <Link href="/portfolio">
@@ -224,19 +224,14 @@ export default function Home() {
               </motion.div>
 
               {/* Trust */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.6 }}
-                className="flex flex-wrap items-center justify-center gap-5 pt-6 border-t border-white/10"
-              >
+              <div className="flex flex-wrap items-center justify-center gap-5 pt-6 border-t border-white/10">
                 {['Sans engagement', 'Réponse sous 24h', 'Devis gratuit'].map((item) => (
                   <div key={item} className="flex items-center gap-1.5">
                     <CheckCircle className="w-4 h-4 text-white/50" />
                     <span className="text-white/50 text-xs">{item}</span>
                   </div>
                 ))}
-              </motion.div>
+              </div>
 
             </div>
           </div>
