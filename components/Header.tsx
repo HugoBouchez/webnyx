@@ -38,14 +38,14 @@ export default function Header() {
       <div className={`absolute bottom-0 left-0 right-0 h-px bg-[#C9A96E]/35 transition-opacity duration-500 ${isScrolled || pathname !== '/' ? 'opacity-100' : 'opacity-0'}`} />
 
       <nav className="container mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-[64px]">
+        <div className="flex items-center justify-between h-[70px]">
 
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 flex-shrink-0">
-            <div className="w-8 h-8 border border-[#C9A96E]/55 flex items-center justify-center">
-              <span className="font-display text-[#C9A96E] font-light text-lg italic leading-none">W</span>
+            <div className="w-9 h-9 border border-[#C9A96E]/55 flex items-center justify-center">
+              <span className="font-display text-[#C9A96E] font-light text-xl italic leading-none">W</span>
             </div>
-            <span className="font-display text-white font-light text-[1.2rem] tracking-wide leading-none">
+            <span className="font-display text-white font-light text-[1.35rem] tracking-wide leading-none">
               Webnyx
             </span>
           </Link>
@@ -58,10 +58,10 @@ export default function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`relative px-5 py-2 text-sm transition-colors duration-150 ${
+                  className={`relative px-5 py-2 text-[15px] font-medium transition-colors duration-150 ${
                     isActive
                       ? 'text-[#C9A96E]'
-                      : 'text-white/90 hover:text-white'
+                      : 'text-white hover:text-white/80'
                   }`}
                 >
                   {item.name}
@@ -86,7 +86,7 @@ export default function Header() {
               {theme === 'light' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
             </button>
             <Link href="/contact">
-              <button className="px-5 py-[7px] border border-[#C9A96E]/55 text-[#C9A96E] text-sm font-semibold hover:bg-[#C9A96E] hover:text-[#1E3A5F] transition-all duration-200">
+              <button className="px-5 py-2 border border-[#C9A96E]/55 text-[#C9A96E] text-[15px] font-semibold hover:bg-[#C9A96E] hover:text-[#1E3A5F] transition-all duration-200">
                 Devis gratuit
               </button>
             </Link>
