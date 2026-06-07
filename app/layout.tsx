@@ -4,6 +4,7 @@ import './globals.css'
 import ConditionalHeader from '@/components/ConditionalHeader'
 import ConditionalFooter from '@/components/ConditionalFooter'
 import { ThemeProvider } from '@/components/ThemeProvider'
+import { Analytics } from '@vercel/analytics/next'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' })
 const cormorant = Cormorant_Garamond({
@@ -41,6 +42,7 @@ export default function RootLayout({
             <ConditionalFooter />
           </div>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )
