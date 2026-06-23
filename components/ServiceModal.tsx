@@ -8,9 +8,7 @@ import { useEffect } from 'react'
 interface ServiceModalProps {
   isOpen: boolean
   onClose: () => void
-  title: string
-  icon: React.ComponentType<{ className?: string }>
-  color: string
+  title?: string
   content: {
     title: string
     description: string

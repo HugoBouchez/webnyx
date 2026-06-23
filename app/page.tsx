@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowRight, CheckCircle, Code, RefreshCw, Palette, Settings } from 'lucide-react'
+import { ArrowRight, CheckCircle } from 'lucide-react'
 import PortfolioCard from '@/components/PortfolioCard'
 import Image from 'next/image'
 import { getImagePath } from '@/lib/imagePath'
@@ -62,49 +62,40 @@ const featuredPortfolio = [
 
 const services = [
   {
-    icon: Code,
     title: 'Création de site vitrine',
-    price: 'À partir de 749 €',
-    description: 'Sites vitrines modernes et personnalisés pour présenter votre activité, vos services et votre image professionnelle en ligne.',
-    color: 'from-blue-500 to-cyan-500',
+    desc: 'Un site moderne et sur-mesure pour présenter votre activité.',
     modalContent: {
       title: 'Création de site vitrine',
       description: 'Créez un site professionnel sur mesure pour présenter votre activité, améliorer votre visibilité en ligne, renforcer la crédibilité de votre marque et convertir vos visiteurs en clients.',
       details: [
         'Design moderne et personnalisé adapté à votre identité de marque',
-        'Site vitrine complet optimisé pour présenter efficacement votre activité et vos services',
-        'Performance optimale pour un chargement rapide et une expérience utilisateur fluide',
-        'SEO de base intégré pour améliorer votre visibilité sur les moteurs de recherche',
-        'Design responsive et adaptatif pour tous les appareils (mobile, tablette, desktop)',
-        'Interface intuitive et navigation claire pour guider vos visiteurs vers l\'action',
+        'Site vitrine complet optimisé pour présenter efficacement votre activité',
+        'Performance optimale pour un chargement rapide',
+        'SEO de base intégré pour améliorer votre visibilité sur Google',
+        'Design responsive pour tous les appareils (mobile, tablette, desktop)',
+        'Interface intuitive pour guider vos visiteurs vers l\'action',
       ],
     },
   },
   {
-    icon: RefreshCw,
     title: 'Refonte de site',
-    price: 'À partir de 749 €',
-    description: 'Refonte et modernisation de votre site existant pour améliorer son design, sa clarté et son adaptation aux supports actuels.',
-    color: 'from-purple-500 to-pink-500',
+    desc: 'Modernisation de votre site existant pour un rendu actuel et performant.',
     modalContent: {
       title: 'Refonte de site web',
-      description: 'Améliorez votre site existant en modernisant son design, optimisant l\'expérience utilisateur, améliorant les performances et en l\'alignant avec vos objectifs business actuels.',
+      description: 'Améliorez votre site existant en modernisant son design, optimisant l\'expérience utilisateur et en l\'alignant avec vos objectifs actuels.',
       details: [
         'Modernisation complète du design pour un rendu actuel et professionnel',
-        'Optimisation de l\'expérience utilisateur (UX) pour une navigation plus fluide et intuitive',
-        'Amélioration des performances techniques (vitesse de chargement, optimisation)',
+        'Optimisation de l\'expérience utilisateur (UX) pour une navigation fluide',
+        'Amélioration des performances techniques (vitesse de chargement)',
         'Alignement avec vos objectifs business et stratégie digitale actuelle',
         'Migration vers des technologies modernes et performantes',
-        'Amélioration du taux de conversion grâce à une meilleure expérience utilisateur',
+        'Amélioration du taux de conversion grâce à une meilleure UX',
       ],
     },
   },
   {
-    icon: Palette,
     title: 'Site E-Commerce',
-    price: 'À partir de 1 899 €',
-    description: 'Boutique en ligne complète avec catalogue produits, paiement sécurisé et gestion des commandes pour vendre sans dépendre d\'une plateforme.',
-    color: 'from-orange-500 to-red-500',
+    desc: 'Boutique en ligne complète avec paiement sécurisé intégré.',
     modalContent: {
       title: 'Site E-Commerce',
       description: 'Lancez votre boutique en ligne sur mesure avec une gestion complète des produits, un paiement sécurisé et un design optimisé pour la conversion.',
@@ -119,23 +110,47 @@ const services = [
     },
   },
   {
-    icon: Settings,
     title: 'Maintenance & hébergement',
-    price: 'À partir de 35 €/mois',
-    description: 'Hébergement sécurisé et maintenance régulière pour garantir le bon fonctionnement et la sécurité de votre site.',
-    color: 'from-green-500 to-emerald-500',
+    desc: 'Hébergement sécurisé et suivi mensuel de votre site.',
     modalContent: {
       title: 'Maintenance & Hébergement',
-      description: 'Gérez la partie technique de votre site avec des mises à jour régulières, une sécurité renforcée, des sauvegardes automatiques, des performances optimisées, un hébergement fiable et un accompagnement continu.',
+      description: 'Gérez la partie technique de votre site avec des mises à jour régulières, une sécurité renforcée et un accompagnement continu.',
       details: [
-        'Mises à jour régulières pour maintenir votre site à jour et sécurisé',
-        'Sécurité renforcée avec protection contre les menaces et vulnérabilités',
-        'Sauvegardes automatiques pour protéger vos données et votre contenu',
-        'Optimisation des performances pour garantir un site rapide et réactif',
-        'Hébergement fiable et performant avec disponibilité maximale',
-        'Accompagnement continu pour garantir un site toujours fonctionnel et performant',
+        'Mises à jour régulières pour maintenir votre site sécurisé',
+        'Sécurité renforcée avec protection contre les menaces',
+        'Sauvegardes automatiques pour protéger vos données',
+        'Optimisation des performances pour un site toujours rapide',
+        'Hébergement fiable avec disponibilité maximale',
+        'Accompagnement continu et support technique inclus',
       ],
     },
+  },
+]
+
+const homePacks = [
+  {
+    num: '01',
+    title: 'Site Vitrine',
+    price: '749 €',
+    tagline: 'Pour lancer votre présence en ligne.',
+    popular: false,
+    features: ['3 pages personnalisées', 'Design sur-mesure', 'Formulaire de contact', 'SEO de base intégré', 'Responsive mobile & tablette', 'Livraison sous 1 mois'],
+  },
+  {
+    num: '02',
+    title: 'Site Vitrine +',
+    price: '999 €',
+    tagline: 'Pour une présence complète et professionnelle.',
+    popular: true,
+    features: ['5 à 7 pages personnalisées', 'Tout du pack Site Vitrine', 'Blog ou actualités', 'Animations avancées', 'Google Analytics', '1 modification incluse/mois'],
+  },
+  {
+    num: '03',
+    title: 'Site E-Commerce',
+    price: 'À partir de 1 899 €',
+    tagline: 'Pour vendre en ligne sans dépendre d\'une plateforme.',
+    popular: false,
+    features: ['Boutique en ligne complète', 'Catalogue produits illimité', 'Paiement sécurisé intégré', 'Gestion commandes & stocks', 'SEO e-commerce avancé', 'Livraison sous 2 mois'],
   },
 ]
 
@@ -239,7 +254,72 @@ export default function Home() {
       </section>
 
       {/* ── SERVICES ── */}
-      <section className="py-24 md:py-32 bg-white dark:bg-dark">
+      <section className="pt-16 pb-10 bg-gray-50 dark:bg-dark">
+        <div className="container mx-auto px-6 lg:px-8">
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mb-10"
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-6 h-px bg-[#C9A96E]" />
+              <span className="text-[#C9A96E] text-xs font-semibold tracking-[0.2em] uppercase">Expertise</span>
+            </div>
+            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-light text-gray-900 dark:text-white leading-tight">
+              Ce que je fais <span className="italic text-[#C9A96E]">pour vous.</span>
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {services.map((service, index) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.07 }}
+                onClick={() => setSelectedService(index)}
+                className="group cursor-pointer p-8 border border-gray-200 dark:border-gray-800 rounded-xl hover:border-primary hover:shadow-md transition-all duration-300 bg-white dark:bg-dark"
+              >
+                <span className="text-[#C9A96E] text-sm font-semibold tracking-widest">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <h3 className="font-display text-2xl font-normal text-gray-900 dark:text-white mt-3 mb-3 group-hover:text-primary transition-colors duration-200 leading-tight">
+                  {service.title}
+                </h3>
+                <p className="text-gray-500 dark:text-white/55 text-sm leading-relaxed">
+                  {service.desc}
+                </p>
+                <p className="text-[#C9A96E] text-sm font-semibold mt-5 group-hover:underline">
+                  En savoir plus →
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
+          {selectedService !== null && (
+            <ServiceModal
+              isOpen={selectedService !== null}
+              onClose={() => setSelectedService(null)}
+              title={services[selectedService].title}
+              content={services[selectedService].modalContent}
+            />
+          )}
+        </div>
+      </section>
+
+      {/* ── SÉPARATEUR ── */}
+      <div className="bg-gray-50 dark:bg-dark">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="h-px bg-[#C9A96E]/40" />
+        </div>
+      </div>
+
+      {/* ── TARIFS ── */}
+      <section className="pt-16 pb-24 bg-gray-50 dark:bg-dark-light">
         <div className="container mx-auto px-6 lg:px-8">
 
           <motion.div
@@ -251,92 +331,86 @@ export default function Home() {
           >
             <div className="flex items-center gap-3 mb-5">
               <div className="w-6 h-px bg-[#C9A96E]" />
-              <span className="text-[#C9A96E] text-xs font-semibold tracking-[0.2em] uppercase">Expertise</span>
+              <span className="text-[#C9A96E] text-xs font-semibold tracking-[0.2em] uppercase">Tarifs</span>
             </div>
             <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-light text-gray-900 dark:text-white leading-tight">
-              Ce que je fais <span className="italic text-[#C9A96E]">pour vous.</span>
+              Des formules claires, <span className="italic text-[#C9A96E]">sans surprise.</span>
             </h2>
           </motion.div>
 
-          {/* Liste horizontale */}
-          <div className="mt-2">
-            {services.map((service, index) => (
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {homePacks.map((pack, index) => (
               <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 16 }}
+                key={pack.title}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: index * 0.08 }}
-                onClick={() => setSelectedService(index)}
-                className="group cursor-pointer"
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className={`relative flex flex-col rounded-xl border p-8 ${
+                  pack.popular
+                    ? 'bg-primary border-primary shadow-xl'
+                    : 'bg-white dark:bg-dark border-gray-200 dark:border-gray-800'
+                }`}
               >
-                {/* Séparateur */}
-                <div className="h-px bg-[#C9A96E]/30 group-hover:bg-[#C9A96E] transition-colors duration-300" />
-
-                {/* Contenu */}
-                <div className="py-8 px-4 -mx-4 grid grid-cols-12 gap-6 items-center group-hover:bg-gray-50 dark:group-hover:bg-white/5 transition-colors duration-300 rounded-lg">
-
-                  {/* Numéro */}
-                  <div className="col-span-1 flex items-center">
-                    <span className="font-display text-5xl sm:text-6xl font-light text-[#C9A96E]/60 group-hover:text-[#C9A96E] transition-colors duration-300 leading-none select-none">
-                      {String(index + 1).padStart(2, '0')}
+                {pack.popular && (
+                  <div className="absolute -top-3 left-8">
+                    <span className="px-3 py-1 bg-[#C9A96E] text-white text-xs font-semibold rounded-full tracking-wide">
+                      Le plus populaire
                     </span>
                   </div>
+                )}
 
-                  {/* Titre */}
-                  <div className="col-span-11 sm:col-span-3">
-                    <h3 className="font-display text-2xl sm:text-3xl font-normal text-gray-900 dark:text-white group-hover:text-primary transition-colors duration-200 leading-tight">
-                      {service.title}
-                    </h3>
-                  </div>
-
-                  {/* Description */}
-                  <div className="hidden sm:block col-span-5">
-                    <p className="text-gray-500 dark:text-white/60 text-[15px] leading-relaxed">
-                      {service.description}
-                    </p>
-                  </div>
-
-                  {/* Prix */}
-                  <div className="hidden sm:block col-span-2">
-                    <p className="text-gray-900 dark:text-white font-semibold text-lg">
-                      {service.price}
-                    </p>
-                  </div>
-
-                  {/* Flèche */}
-                  <div className="hidden sm:flex col-span-1 justify-end">
-                    <ArrowRight className="w-5 h-5 text-gray-300 dark:text-white/30 group-hover:text-[#C9A96E] group-hover:translate-x-1 transition-all duration-200" />
-                  </div>
+                <div className="mb-6">
+                  <span className="text-xs font-semibold tracking-widest text-[#C9A96E]">{pack.num} —</span>
+                  <h3 className={`font-display text-3xl font-light mt-1 mb-2 ${pack.popular ? 'text-white' : 'text-gray-900 dark:text-white'}`}>
+                    {pack.title}
+                  </h3>
+                  <p className={`text-sm leading-relaxed ${pack.popular ? 'text-white/55' : 'text-gray-500 dark:text-gray-400'}`}>
+                    {pack.tagline}
+                  </p>
                 </div>
+
+                <div className={`py-6 mb-6 border-t border-b ${pack.popular ? 'border-white/10' : 'border-gray-100 dark:border-gray-800'}`}>
+                  <span className={`font-display text-4xl font-light ${pack.popular ? 'text-white' : 'text-gray-900 dark:text-white'}`}>
+                    {pack.price}
+                  </span>
+                  <p className={`text-xs mt-1 ${pack.popular ? 'text-white/40' : 'text-gray-400'}`}>mise en service</p>
+                </div>
+
+                <ul className="space-y-3 flex-1 mb-8">
+                  {pack.features.map((feature, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <div className="w-1 h-1 rounded-full bg-[#C9A96E] mt-2 flex-shrink-0" />
+                      <span className={`text-sm leading-relaxed ${pack.popular ? 'text-white/70' : 'text-gray-600 dark:text-gray-300'}`}>
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                <Link href="/contact">
+                  <button className={`w-full py-3.5 rounded-lg font-semibold text-sm transition-colors flex items-center justify-center gap-2 ${
+                    pack.popular
+                      ? 'bg-[#C9A96E] hover:bg-[#b8913e] text-white'
+                      : 'bg-primary hover:bg-primary-dark text-white'
+                  }`}>
+                    Démarrer ce projet <ArrowRight className="w-4 h-4" />
+                  </button>
+                </Link>
               </motion.div>
             ))}
-
-            {/* Séparateur final */}
-            <div className="h-px bg-[#C9A96E]/30" />
           </div>
-
-          {selectedService !== null && (
-            <ServiceModal
-              isOpen={selectedService !== null}
-              onClose={() => setSelectedService(null)}
-              title={services[selectedService].title}
-              icon={services[selectedService].icon}
-              color={services[selectedService].color}
-              content={services[selectedService].modalContent}
-            />
-          )}
 
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="mt-12"
+            className="mt-10"
           >
             <Link href="/services">
-              <button className="px-8 py-3.5 bg-primary hover:bg-primary-dark text-white font-semibold rounded-lg text-sm transition-colors flex items-center gap-2">
-                Voir tous les tarifs <ArrowRight className="w-4 h-4" />
+              <button className="px-8 py-3.5 border border-primary text-primary hover:bg-primary hover:text-white font-semibold rounded-lg text-sm transition-all duration-200 flex items-center gap-2">
+                Voir tous les détails & l'hébergement <ArrowRight className="w-4 h-4" />
               </button>
             </Link>
           </motion.div>
