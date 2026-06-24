@@ -10,7 +10,15 @@ import { useState } from 'react'
 
 const homeFeatured = [
   {
-    num: '01', badge: 'CRÉDIBILITÉ', slug: 'site-dentiste-professionnel',
+    num: '01', badge: 'ENGAGEMENT', slug: 'pizzeria-bella-pizza',
+    title: 'Pizzeria Bella Pizza.',
+    subtitle: 'Un menu qui donne faim avant même d\'arriver.',
+    image: '/image/Image pizzeria.png',
+    description: 'Pour un restaurant, le site web doit faire ressentir l\'ambiance, mettre l\'eau à la bouche et faciliter la décision. Un visiteur qui passe 3 minutes sur le menu doit repartir avec l\'envie irrésistible de réserver.',
+    points: ['Menu complet avec descriptions appétissantes et photos', 'Système de réservation en ligne intégré directement', 'Mise en valeur des spécialités maison et de la carte des vins', 'Design chaleureux qui reflète l\'âme de l\'établissement'],
+  },
+  {
+    num: '02', badge: 'CRÉDIBILITÉ', slug: 'site-dentiste-professionnel',
     title: 'Cabinet dentaire professionnel.',
     subtitle: 'Un site qui rassure avant même le premier rendez-vous.',
     image: '/image/Image preview dentiste.png',
@@ -18,20 +26,12 @@ const homeFeatured = [
     points: ['Design épuré et professionnel qui inspire immédiatement confiance', 'Présentation de l\'équipe et des services pour rassurer avant le RDV', 'Formulaire de prise de rendez-vous intégré et simplifié', 'SEO local optimisé pour apparaître sur "dentiste [ville]"'],
   },
   {
-    num: '02', badge: 'CONVERSION', slug: 'site-courtier-assurance',
+    num: '03', badge: 'CONVERSION', slug: 'site-courtier-assurance',
     title: 'Courtier en assurance.',
     subtitle: 'Des visiteurs qui deviennent des prospects qualifiés.',
     image: '/image/Image preview courtier.png',
     description: 'Un courtier en assurance doit convaincre rapidement : expertise visible, clarté des offres et facilité à être contacté. Le site capte les demandes de devis et qualifie les prospects avant même le premier appel.',
     points: ['Présentation claire des produits, garanties et avantages', 'Formulaire de demande de devis optimisé pour la conversion', 'Section "Pourquoi nous choisir" qui lève les objections', 'Design professionnel qui renforce l\'image d\'expert du secteur'],
-  },
-  {
-    num: '03', badge: 'ENGAGEMENT', slug: 'pizzeria-bella-pizza',
-    title: 'Pizzeria Bella Pizza.',
-    subtitle: 'Un menu qui donne faim avant même d\'arriver.',
-    image: '/image/Image pizzeria.png',
-    description: 'Pour un restaurant, le site web doit faire ressentir l\'ambiance, mettre l\'eau à la bouche et faciliter la décision. Un visiteur qui passe 3 minutes sur le menu doit repartir avec l\'envie irrésistible de réserver.',
-    points: ['Menu complet avec descriptions appétissantes et photos', 'Système de réservation en ligne intégré directement', 'Mise en valeur des spécialités maison et de la carte des vins', 'Design chaleureux qui reflète l\'âme de l\'établissement'],
   },
   {
     num: '04', badge: 'PREMIUM', slug: 'salon-coiffure-elegance',
