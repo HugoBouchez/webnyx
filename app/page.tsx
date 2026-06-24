@@ -3,60 +3,50 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { ArrowRight, CheckCircle } from 'lucide-react'
-import PortfolioCard from '@/components/PortfolioCard'
 import Image from 'next/image'
 import { getImagePath } from '@/lib/imagePath'
 import ServiceModal from '@/components/ServiceModal'
 import { useState } from 'react'
 
-const featuredPortfolio = [
+const homeFeatured = [
   {
-    title: 'Site Web Courtier en Assurance',
-    slug: 'site-courtier-assurance',
-    description: 'Site web professionnel pour courtier en assurance avec demande de devis en ligne, présentation des produits et gestion des sinistres.',
-    image: '/image/Image preview courtier.png',
-  },
-  {
-    title: 'Site Web Dentiste Professionnel',
+    num: '01',
+    badge: 'CRÉDIBILITÉ',
     slug: 'site-dentiste-professionnel',
-    description: 'Site web ultra-professionnel pour cabinet dentaire avec présentation des services, équipe, témoignages et prise de rendez-vous.',
+    title: 'Cabinet dentaire professionnel.',
     image: '/image/Image preview dentiste.png',
+    description: 'Un site web qui inspire confiance dès la première seconde. Pour un cabinet dentaire, la crédibilité en ligne est aussi importante que la salle d\'attente.',
+    points: [
+      'Design épuré et rassurant, adapté aux professionnels de santé',
+      'Présentation des soins, de l\'équipe et prise de rendez-vous en ligne',
+      'Optimisé pour le référencement local — visible sur Google Maps',
+    ],
   },
   {
-    title: 'Site Web Pizzeria Bella Pizza',
+    num: '02',
+    badge: 'CONVERSION',
+    slug: 'site-courtier-assurance',
+    title: 'Courtier en assurance — générer des leads.',
+    image: '/image/Image preview courtier.png',
+    description: 'Un site conçu pour transformer les visiteurs en prospects qualifiés. Chaque section pousse vers une demande de devis.',
+    points: [
+      'Formulaire de devis en ligne intégré et optimisé pour la conversion',
+      'Présentation claire des garanties et produits proposés',
+      'Design professionnel qui renforce la confiance et la légitimité',
+    ],
+  },
+  {
+    num: '03',
+    badge: 'ENGAGEMENT',
     slug: 'pizzeria-bella-pizza',
-    description: 'Site web moderne pour pizzeria avec menu complet, sélection de vins, témoignages clients et réservation en ligne. Design appétissant et professionnel.',
+    title: 'Pizzeria Bella Pizza — l\'appétit vient en navigant.',
     image: '/image/Image pizzeria.png',
-  },
-  {
-    title: 'Site Web Salon de Coiffure Élégance',
-    slug: 'salon-coiffure-elegance',
-    description: 'Site web élégant pour salon de coiffure avec présentation des prestations, tarifs, produits et prise de rendez-vous. Design premium et professionnel.',
-    image: '/image/Image coiffeur.png',
-  },
-  {
-    title: 'Landing Page Marketing',
-    slug: 'landing-page-marketing',
-    description: 'Landing page optimisée pour la conversion avec formulaires, animations et tracking des performances.',
-    image: '/plombier-image.png',
-  },
-  {
-    title: 'Site Web Notaire',
-    slug: 'portfolio-creatif',
-    description: 'Site web professionnel pour étude notariale avec présentation des services, actualités juridiques et prise de rendez-vous.',
-    image: '/notaire-image.png',
-  },
-  {
-    title: 'Site Web Coach Indépendant',
-    slug: 'site-vitrine-entreprise',
-    description: 'Site web professionnel pour coach indépendant avec présentation des services, réservation en ligne et témoignages clients.',
-    image: '/coach-image.png',
-  },
-  {
-    title: 'Site E-commerce Moderne',
-    slug: 'site-ecommerce-moderne',
-    description: 'Plateforme e-commerce complète avec gestion de commandes, panier, et paiement sécurisé. Design moderne et responsive.',
-    image: '/ecommerce-image.png',
+    description: 'Un site qui donne faim avant même d\'arriver au restaurant. Menus, ambiance, réservations — tout est là.',
+    points: [
+      'Menu complet avec photos appétissantes et sélection de vins',
+      'Réservation en ligne et commande à emporter intégrées',
+      'Design chaud et accueillant qui reflète l\'identité du restaurant',
+    ],
   },
 ]
 
@@ -250,6 +240,20 @@ export default function Home() {
 
             </div>
           </div>
+        {/* Scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.9 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
+        >
+          <span className="text-white/35 text-[10px] font-semibold tracking-[0.25em] uppercase">Défiler</span>
+          <motion.div
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+            className="w-px h-8 bg-gradient-to-b from-white/30 to-transparent"
+          />
+        </motion.div>
         </div>
       </section>
 
@@ -463,48 +467,102 @@ export default function Home() {
       </section>
 
       {/* ── PORTFOLIO ── */}
-      <section className="py-24 md:py-32 bg-white dark:bg-dark">
-        <div className="container mx-auto px-6 lg:px-8">
+      {homeFeatured.map((project, index) => (
+        <section
+          key={project.num}
+          className={`py-24 md:py-32 ${index % 2 === 0 ? 'bg-white dark:bg-dark' : 'bg-gray-50 dark:bg-dark-light'}`}
+        >
+          <div className="container mx-auto px-6 lg:px-8">
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-16 max-w-2xl mx-auto"
-          >
-            <div className="flex items-center justify-center gap-3 mb-5">
-              <div className="w-6 h-px bg-[#C9A96E]" />
-              <span className="text-[#C9A96E] text-xs font-semibold tracking-[0.2em] uppercase">Réalisations</span>
-              <div className="w-6 h-px bg-[#C9A96E]" />
+            {index === 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="text-center mb-20 max-w-2xl mx-auto"
+              >
+                <div className="flex items-center justify-center gap-3 mb-5">
+                  <div className="w-6 h-px bg-[#C9A96E]" />
+                  <span className="text-[#C9A96E] text-xs font-semibold tracking-[0.2em] uppercase">Réalisations</span>
+                  <div className="w-6 h-px bg-[#C9A96E]" />
+                </div>
+                <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-light text-gray-900 dark:text-white leading-tight">
+                  Des projets <span className="italic text-[#C9A96E]">concrets.</span>
+                </h2>
+              </motion.div>
+            )}
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+              {/* Image */}
+              <motion.div
+                initial={{ opacity: 0, x: index % 2 !== 0 ? 40 : -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className={`relative ${index % 2 !== 0 ? 'lg:order-last' : ''}`}
+              >
+                <div className="relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 shadow-lg group">
+                  <Link href={`/portfolio/${project.slug}`}>
+                    <Image
+                      src={getImagePath(project.image)}
+                      alt={project.title}
+                      width={800}
+                      height={520}
+                      className="w-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-primary/70 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
+                      <span className="text-white text-sm font-semibold tracking-[0.15em] uppercase bg-white/10 backdrop-blur-sm px-5 py-2.5 rounded-full border border-white/20">
+                        Voir la démo
+                      </span>
+                    </div>
+                  </Link>
+                </div>
+                <div className="absolute -bottom-4 -right-4 font-display text-[120px] font-light leading-none text-[#C9A96E]/40 select-none pointer-events-none z-0">
+                  {project.num}
+                </div>
+              </motion.div>
+
+              {/* Text */}
+              <motion.div
+                initial={{ opacity: 0, x: index % 2 !== 0 ? -40 : 40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className={`relative z-10 ${index % 2 !== 0 ? 'lg:order-first' : ''}`}
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-6 h-px bg-[#C9A96E]" />
+                  <span className="text-[#C9A96E] text-xs font-semibold tracking-[0.2em] uppercase">{project.badge}</span>
+                </div>
+                <h3 className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-gray-900 dark:text-white leading-tight mb-6">
+                  {project.title}
+                </h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-8">
+                  {project.description}
+                </p>
+                <ul className="space-y-3">
+                  {project.points.map((point, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <div className="flex-shrink-0 w-1 h-1 rounded-full bg-[#C9A96E] mt-2.5" />
+                      <span className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
             </div>
-            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-light text-gray-900 dark:text-white leading-tight">
-              Des projets <span className="italic text-[#C9A96E]">concrets.</span>
-            </h2>
-          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {featuredPortfolio.map((project, index) => (
-              <PortfolioCard
-                key={project.title}
-                title={project.title}
-                description={project.description}
-                image={project.image}
-                slug={project.slug}
-                index={index}
-              />
-            ))}
           </div>
+        </section>
+      ))}
 
-          <div className="text-center">
-            <Link href="/portfolio">
-              <button className="px-8 py-3.5 border border-primary text-primary hover:bg-primary hover:text-white font-semibold rounded-lg text-sm transition-all duration-200 flex items-center gap-2 mx-auto">
-                Voir tout le portfolio <ArrowRight className="w-4 h-4" />
-              </button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <div className="py-12 bg-gray-50 dark:bg-dark-light text-center">
+        <Link href="/portfolio">
+          <button className="px-8 py-3.5 border border-primary text-primary hover:bg-primary hover:text-white font-semibold rounded-lg text-sm transition-all duration-200 flex items-center gap-2 mx-auto">
+            Voir toutes les réalisations <ArrowRight className="w-4 h-4" />
+          </button>
+        </Link>
+      </div>
 
       {/* ── CTA ── */}
       <section className="py-24 md:py-32 bg-gray-950 dark:bg-dark-light">
