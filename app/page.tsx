@@ -10,43 +10,36 @@ import { useState } from 'react'
 
 const homeFeatured = [
   {
-    num: '01',
-    badge: 'CRÉDIBILITÉ',
-    slug: 'site-dentiste-professionnel',
+    num: '01', badge: 'CRÉDIBILITÉ', slug: 'site-dentiste-professionnel',
     title: 'Cabinet dentaire professionnel.',
+    subtitle: 'Un site qui rassure avant même le premier rendez-vous.',
     image: '/image/Image preview dentiste.png',
-    description: 'Un site web qui inspire confiance dès la première seconde. Pour un cabinet dentaire, la crédibilité en ligne est aussi importante que la salle d\'attente.',
-    points: [
-      'Design épuré et rassurant, adapté aux professionnels de santé',
-      'Présentation des soins, de l\'équipe et prise de rendez-vous en ligne',
-      'Optimisé pour le référencement local — visible sur Google Maps',
-    ],
+    description: 'Pour un cabinet dentaire, le site web est souvent le premier contact avec un patient potentiel. L\'enjeu : inspirer confiance, réduire l\'anxiété et transformer un visiteur hésitant en patient qui prend rendez-vous.',
+    points: ['Design épuré et professionnel qui inspire immédiatement confiance', 'Présentation de l\'équipe et des services pour rassurer avant le RDV', 'Formulaire de prise de rendez-vous intégré et simplifié', 'SEO local optimisé pour apparaître sur "dentiste [ville]"'],
   },
   {
-    num: '02',
-    badge: 'CONVERSION',
-    slug: 'site-courtier-assurance',
-    title: 'Courtier en assurance — générer des leads.',
+    num: '02', badge: 'CONVERSION', slug: 'site-courtier-assurance',
+    title: 'Courtier en assurance.',
+    subtitle: 'Des visiteurs qui deviennent des prospects qualifiés.',
     image: '/image/Image preview courtier.png',
-    description: 'Un site conçu pour transformer les visiteurs en prospects qualifiés. Chaque section pousse vers une demande de devis.',
-    points: [
-      'Formulaire de devis en ligne intégré et optimisé pour la conversion',
-      'Présentation claire des garanties et produits proposés',
-      'Design professionnel qui renforce la confiance et la légitimité',
-    ],
+    description: 'Un courtier en assurance doit convaincre rapidement : expertise visible, clarté des offres et facilité à être contacté. Le site capte les demandes de devis et qualifie les prospects avant même le premier appel.',
+    points: ['Présentation claire des produits, garanties et avantages', 'Formulaire de demande de devis optimisé pour la conversion', 'Section "Pourquoi nous choisir" qui lève les objections', 'Design professionnel qui renforce l\'image d\'expert du secteur'],
   },
   {
-    num: '03',
-    badge: 'ENGAGEMENT',
-    slug: 'pizzeria-bella-pizza',
-    title: 'Pizzeria Bella Pizza — l\'appétit vient en navigant.',
+    num: '03', badge: 'ENGAGEMENT', slug: 'pizzeria-bella-pizza',
+    title: 'Pizzeria Bella Pizza.',
+    subtitle: 'Un menu qui donne faim avant même d\'arriver.',
     image: '/image/Image pizzeria.png',
-    description: 'Un site qui donne faim avant même d\'arriver au restaurant. Menus, ambiance, réservations — tout est là.',
-    points: [
-      'Menu complet avec photos appétissantes et sélection de vins',
-      'Réservation en ligne et commande à emporter intégrées',
-      'Design chaud et accueillant qui reflète l\'identité du restaurant',
-    ],
+    description: 'Pour un restaurant, le site web doit faire ressentir l\'ambiance, mettre l\'eau à la bouche et faciliter la décision. Un visiteur qui passe 3 minutes sur le menu doit repartir avec l\'envie irrésistible de réserver.',
+    points: ['Menu complet avec descriptions appétissantes et photos', 'Système de réservation en ligne intégré directement', 'Mise en valeur des spécialités maison et de la carte des vins', 'Design chaleureux qui reflète l\'âme de l\'établissement'],
+  },
+  {
+    num: '04', badge: 'PREMIUM', slug: 'salon-coiffure-elegance',
+    title: 'Salon de coiffure Élégance.',
+    subtitle: 'L\'image premium, avant même le premier coup de ciseaux.',
+    image: '/image/Image coiffeur.png',
+    description: 'Un salon haut de gamme doit refléter son positionnement dès la première seconde. Le site devient une vitrine de l\'expertise : galerie de réalisations, prestations détaillées, prise de rendez-vous — tout respire le soin du détail.',
+    points: ['Galerie de réalisations pour démontrer l\'expertise stylistique', 'Présentation détaillée des prestations et grille tarifaire', 'Prise de rendez-vous en ligne 24h/24 sans téléphone', 'Identité visuelle premium alignée sur le positionnement du salon'],
   },
 ]
 
@@ -470,7 +463,7 @@ export default function Home() {
       {homeFeatured.map((project, index) => (
         <section
           key={project.num}
-          className={`py-24 md:py-32 ${index % 2 === 0 ? 'bg-white dark:bg-dark' : 'bg-gray-50 dark:bg-dark-light'}`}
+          className={`py-24 ${index % 2 === 0 ? 'bg-white dark:bg-dark' : 'bg-gray-50 dark:bg-dark-light'}`}
         >
           <div className="container mx-auto px-6 lg:px-8">
 
@@ -493,65 +486,81 @@ export default function Home() {
               </motion.div>
             )}
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
               {/* Image */}
               <motion.div
-                initial={{ opacity: 0, x: index % 2 !== 0 ? 40 : -40 }}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -24 : 24 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
                 className={`relative ${index % 2 !== 0 ? 'lg:order-last' : ''}`}
               >
-                <div className="relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 shadow-lg group">
-                  <Link href={`/portfolio/${project.slug}`}>
+                <Link href={`/portfolio/demo/${project.slug}`} className="block group">
+                  <div className="relative rounded-xl overflow-hidden shadow-xl">
                     <Image
                       src={getImagePath(project.image)}
                       alt={project.title}
-                      width={800}
-                      height={520}
-                      className="w-full object-cover"
+                      width={720}
+                      height={480}
+                      className="w-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-primary/70 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-                      <span className="text-white text-sm font-semibold tracking-[0.15em] uppercase bg-white/10 backdrop-blur-sm px-5 py-2.5 rounded-full border border-white/20">
-                        Voir la démo
+                    <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-colors duration-300" />
+                    <div className="absolute top-4 left-4">
+                      <span className="px-3 py-1.5 bg-primary/90 backdrop-blur-sm text-[#C9A96E] text-[10px] font-semibold tracking-[0.2em] uppercase rounded">
+                        {project.badge}
                       </span>
                     </div>
-                  </Link>
-                </div>
-                <div className="absolute -bottom-4 -right-4 font-display text-[120px] font-light leading-none text-[#C9A96E]/40 select-none pointer-events-none z-0">
-                  {project.num}
-                </div>
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <span className="px-5 py-2.5 bg-white/95 text-primary text-xs font-semibold rounded-lg shadow-lg flex items-center gap-2">
+                        Voir la démo <ArrowRight className="w-3.5 h-3.5" />
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+                <div className="absolute -bottom-3 -right-3 w-20 h-20 border border-[#C9A96E]/25 rounded-xl -z-10" />
               </motion.div>
 
-              {/* Text */}
+              {/* Texte */}
               <motion.div
-                initial={{ opacity: 0, x: index % 2 !== 0 ? -40 : 40 }}
+                initial={{ opacity: 0, x: index % 2 === 0 ? 24 : -24 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className={`relative z-10 ${index % 2 !== 0 ? 'lg:order-first' : ''}`}
+                className={index % 2 !== 0 ? 'lg:order-first' : ''}
               >
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-6 h-px bg-[#C9A96E]" />
-                  <span className="text-[#C9A96E] text-xs font-semibold tracking-[0.2em] uppercase">{project.badge}</span>
+                <div className="flex items-center gap-4 mb-6">
+                  <span className="font-display text-7xl font-light text-[#C9A96E]/40 leading-none select-none">
+                    {project.num}
+                  </span>
+                  <div className="h-px flex-1 bg-[#C9A96E]/25" />
+                  <span className="text-[#C9A96E] text-[10px] font-semibold tracking-[0.2em] uppercase">{project.badge}</span>
                 </div>
-                <h3 className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-gray-900 dark:text-white leading-tight mb-6">
+                <h3 className="font-display text-4xl sm:text-5xl font-light text-gray-900 dark:text-white leading-tight mb-3">
                   {project.title}
                 </h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-8">
+                <p className="font-display text-xl font-light italic text-[#C9A96E] mb-6 leading-snug">
+                  {project.subtitle}
+                </p>
+                <p className="text-gray-500 dark:text-gray-400 text-[15px] leading-relaxed mb-8">
                   {project.description}
                 </p>
-                <ul className="space-y-3">
+                <ul className="space-y-3 mb-10">
                   {project.points.map((point, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      <div className="flex-shrink-0 w-1 h-1 rounded-full bg-[#C9A96E] mt-2.5" />
-                      <span className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{point}</span>
+                      <div className="w-1 h-1 rounded-full bg-[#C9A96E] mt-2.5 flex-shrink-0" />
+                      <span className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">{point}</span>
                     </li>
                   ))}
                 </ul>
+                <Link href={`/portfolio/demo/${project.slug}`}>
+                  <button className="px-8 py-3.5 bg-primary hover:bg-primary-dark text-white font-semibold rounded-lg text-sm transition-colors flex items-center gap-2">
+                    Voir la démo interactive <ArrowRight className="w-4 h-4" />
+                  </button>
+                </Link>
               </motion.div>
-            </div>
 
+            </div>
           </div>
         </section>
       ))}
