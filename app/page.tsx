@@ -506,11 +506,6 @@ export default function Home() {
                       className="w-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-colors duration-300" />
-                    <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1.5 bg-primary/90 backdrop-blur-sm text-[#C9A96E] text-[10px] font-semibold tracking-[0.2em] uppercase rounded">
-                        {project.badge}
-                      </span>
-                    </div>
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <span className="px-5 py-2.5 bg-white/95 text-primary text-xs font-semibold rounded-lg shadow-lg flex items-center gap-2">
                         Voir la démo <ArrowRight className="w-3.5 h-3.5" />
